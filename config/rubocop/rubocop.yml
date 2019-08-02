@@ -51,6 +51,10 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceInsideBlockBraces:
   SpaceBeforeBlockParameters: false
 
+#　改行文字を入れろというエラーがあったので入れた。
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
 #################### Lint ##################################
 
 # spec 内では
