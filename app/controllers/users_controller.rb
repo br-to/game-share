@@ -3,19 +3,18 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def create
     @user = User.new(users_params)
     if @user.save
-      flash[:success] = "登録しました"
-      redirect_to @user
+      redirect_to @user, sucess: "登録しました"
     else
-      flash[:danger] = "登録できませんでした"
+      flash.now[:danger] = "登録できませんでした"
       render "new"
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private
