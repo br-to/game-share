@@ -1,3 +1,6 @@
 <h1>ようこそGame Shareへ！</h1>
 <p><%= @user.name %></p>
 <p><%= @user.email %></p>
+<% if logged_in? %>
+  <%= link_to "ログアウト", logout_path, method: :delete %>
+<% end %>
