@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get "/help", to: "top_page#help"
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
-  resources :users
+  resources :users, only: [:new, :create, :show]
 end
