@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "top_page#home"
+  get "/help", to: "top_page#help"
+  get "/signup", to: "users#new"
+  post "/signup", to: "users#create"
+  resources :users, only: [:new, :create, :show]
 end
