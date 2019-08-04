@@ -1,0 +1,28 @@
+<h1>新規登録</h1>
+<p>新規登録してGame Share!</p>
+
+<div>
+   <%= form_for(@user, url: signup_path) do |f| %>
+      <p>
+         <%=f.label :name, "ユーザー名" %>
+    　   <%= f.text_field :name %>
+      </p>
+
+      <p>
+         <%= f.label :email, "メールアドレス" %>
+         <%= f.email_field :email %>
+      </p>
+
+      <p>
+         <%= f.label :password, "パスワード" %>
+         <%= f.password_field :password %>
+      </p>
+
+      <p>
+         <%= f.label :password_cofirmation, "パスワードの確認" %>
+         <%= f.password_field :password_confirmation %>
+      </p>
+
+      <p><%= f.submit "登録する" %></p>
+   <% end %>
+</div>
