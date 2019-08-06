@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user, only: [:new, :create]
+
   def new
   end
 
@@ -14,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out if logged_in?
+    log_out
     redirect_to root_url, info: "ログアウトしました"
   end
 end
