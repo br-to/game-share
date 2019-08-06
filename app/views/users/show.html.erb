@@ -4,6 +4,6 @@
 <% if logged_in? %>
   <%= link_to "ログアウト", logout_path, method: :delete %>
   <%= link_to "編集", edit_user_path(current_user) %>
-  <%= link_to "削除", @user, method: :delete, data: { confirm: "削除してもよろしいですか" } %>
+  <%= link_to "削除", profile_path, method: :delete, data: { confirm: "削除してもよろしいですか" } %>
   <%= link_to "トップへ", root_path %>
 <% end %>
