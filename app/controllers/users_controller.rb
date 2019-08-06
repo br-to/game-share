@@ -34,11 +34,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    User.destroy(params[:id])
-    redirect_to root_url, danger: "ユーザーを削除しました"
-  end
-
   private
 
     def users_params
