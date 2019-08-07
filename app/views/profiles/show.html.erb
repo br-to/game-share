@@ -1,6 +1,7 @@
 <p><%= current_user.name %></p>
 <p><%= current_user.email %></p>
 <%= link_to "マイページ", user_path(current_user) %>
+<%= link_to "ゲーム一覧", games_path %>
 <%= link_to "編集", edit_profile_path %>
   <%= link_to "削除", profile_path, method: :delete, data: { confirm: "削除してもよろしいですか" } %>
   <%= link_to "ログアウト", logout_path, method: :delete %>
