@@ -2,7 +2,7 @@
 <% if @user.games.any? %>
   <h3>タイトル一覧</h3>
   <% @games.each do |game| %>
-    <p><%= game.title %></p>
+    <p><%=link_to game.title, game_path(game) %></p>
     <hr>
   <% end %>
 <% end %>
