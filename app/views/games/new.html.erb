@@ -1,7 +1,7 @@
 <h1>ゲーム登録画面</h1>
 <p>プレイしたゲームのタイトルを登録してください</p>
 
-<%= form_for(@game) do |f| %>
+<%= form_with(model: @game, local: true) do |f| %>
    <p>
       <%= f.label :title, "ゲームタイトル" %>
       <%= f.text_field :title %>
