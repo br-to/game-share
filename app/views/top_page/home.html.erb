@@ -1,3 +1,9 @@
 <h1>Game Share</h1>
-<%= link_to "GameShareとは", "/help" %>
-<%= link_to "新規登録する", "/signup" %>
+<% if logged_in? %>
+  <p>ログインしとります</p>
+  <%= link_to "プロフィール", profile_path %>
+<% else %>
+  <%= link_to "GameShareとは", "/help" %>
+  <%= link_to "新規登録する", "/signup" %>
+  <%= link_to "ログイン", "/login" %>
+<% end %>
