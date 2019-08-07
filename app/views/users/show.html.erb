@@ -1,5 +1,12 @@
 <h1>ようこそGame Shareへ！</h1>
-<p><%= @user.name %></p>
-<p><%= @user.email %></p>
+<% if @user.games.any? %>
+  <h3>タイトル一覧</h3>
+  <% @games.each do |game| %>
+    <p><%= game.title %></p>
+    <hr>
+  <% end %>
+<% end %>
 <%= link_to "トップへ", root_path %>
+<%= link_to "ゲームを登録する", new_game_path %>
+
 
