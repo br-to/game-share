@@ -3,11 +3,9 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    current_user
   end
 
   def update
-    current_user
     if current_user.update(users_params)
       redirect_to profile_url, success: "更新しました"
     else
