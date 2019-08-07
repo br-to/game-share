@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :games
   before_save :downcase_email
   validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false }
   validates :name, presence: true, length: { maximum: 50 }
