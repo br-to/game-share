@@ -1,3 +1,7 @@
 <%= @game.title %>
-<%= link_to "編集", "#" %>
-<%= link_to "削除", "#" %>
+<% if current_user?(@game.user) %>
+  <p><%= link_to "編集", edit_game_path(@game) %></p>
+  <p><%= link_to "削除", game_path, method: :delete,  data: { confirm: "削除してもよろしいですか？" } %></p>
+<% end %>
+<p><%= link_to "感想・レビューを書く", "#" %></p>
+<p><%= link_to "ゲーム一覧", games_path %></p>

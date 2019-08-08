@@ -22,12 +22,23 @@ class GamesController < ApplicationController
   end
 
   def edit
+    @game = current_user.games.find(params[:id])
   end
 
   def update
+    @game = current_user.games.find(params[:id])
+    if @game.update(game_params)
+      redirect_to game_url, success: "編集しました"
+    else
+      flash.now[:warning] = "編集できませんでした"
+      render "edit"
+    end
   end
 
   def destroy
+    @game = current_user.games.find(params[:id])
+    @game.destroy
+    redirect_to games_url, success: "削除しました"
   end
 
   private

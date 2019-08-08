@@ -1,2 +1,11 @@
-<h1>Games#edit</h1>
-<p>Find me in app/views/games/edit.html.erb</p>
+<h1>ゲームタイトル編集画面</h1>
+<p>編集よ</p>
+
+<%= form_with(model: @game, local: true) do |f| %>
+   <p>
+      <%= f.label :title, "ゲームタイトル" %>
+      <%= f.text_field :title %>
+   </p>
+
+   <p><%= f.submit "編集する" %></p>
+<% end %>
