@@ -1,0 +1,7 @@
+<%= form_with(model: @game, local: true) do |f| %>
+   <p>
+      <%= f.label :title, "ゲームタイトル" %>
+      <%= f.text_field :title %>
+   </p>
+   <p><%= f.submit yield(:button_text) %></p>
+<% end %>
