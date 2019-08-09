@@ -19,6 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @microposts = @game.microposts
   end
 
   def edit
