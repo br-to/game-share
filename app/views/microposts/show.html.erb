@@ -1,0 +1,8 @@
+<h2>感想・レビュー詳細</h2>
+<p><%= @micropost.user.name %></p>
+<p><%= @micropost.game.title %></p>
+<p><%= @micropost.content %></p>
+<% if current_user?(@micropost.user) %>
+<%= link_to "編集", "#" %>
+<%= link_to "削除", "#" %>
+<% end %>
