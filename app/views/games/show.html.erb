@@ -1,7 +1,14 @@
-<%= @game.title %>
+<h2><%= @game.title %></h2>
 <% if current_user?(@game.user) %>
   <p><%= link_to "編集", edit_game_path(@game) %></p>
   <p><%= link_to "削除", game_path, method: :delete,  data: { confirm: "削除してもよろしいですか？" } %></p>
 <% end %>
-<p><%= link_to "感想・レビューを書く", "#" %></p>
+<p><%= link_to "感想・レビューを書く", "/games/#{@game.id}/microposts/new" %></p>
 <p><%= link_to "ゲーム一覧", games_path %></p>
+<h3><%= @game.title %>の感想・レビュー</h3>
+<% @microposts.each do |micropost| %>
+  <p><%= link_to micropost.user.name, user_path(micropost.user) %></p>
+  <%= link_to micropost.content, "/games/#{@game.id}/microposts/#{micropost.id}" %>
+  <%= micropost.created_at%>
+  <hr>
+<% end %>
