@@ -1,0 +1,7 @@
+<%= form_with(model: [@game, @micropost], local: true) do |f| %>
+  <p>
+    <%= f.label :content, "感想・レビュー" %>
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit yield(:button_text) %></p>
+<% end %>
