@@ -19,7 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @microposts = @game.microposts
+    @microposts = @game.microposts.includes(:user)
   end
 
   def edit
