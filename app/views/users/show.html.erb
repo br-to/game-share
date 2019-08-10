@@ -9,9 +9,9 @@
 <% end %>
 <% if @user.microposts.any? %>
   <h3>あなたの感想</h3>
-  <% @microposts.each do |micropost| %>
-    <p><%= micropost.game.title %></p>
-    <%= link_to micropost.content, "/games/#{micropost.game.id}/microposts/#{micropost.id}" %>
+  <% @games.zip(@microposts).each do |game, micropost| %>
+    <p><%= micropost.game_title %></p>
+    <%= link_to micropost.content, game_micropost_path(game, micropost) %>
     <%= micropost.created_at %>
     <hr>
   <% end %>
