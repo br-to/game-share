@@ -1,15 +1,15 @@
 class MicropostsController < ApplicationController
+  before_action :set_game_find
+
   def new
-    @game = Game.find(params[:game_id])
     @micropost = @game.microposts.build
   end
 
   def create
-    @game = Game.find(params[:game_id])
     @micropost = @game.microposts.build(micropost_params)
     @micropost.user_id = current_user.id
     if @micropost.save
-      redirect_to game_path(@game), success: "感想・レビューを登録しました"
+      redirect_to game_url(@game), success: "感想・レビューを登録しました"
     else
       flash.now[:warning] = "登録できませんでした"
       render "new"
@@ -17,17 +17,14 @@ class MicropostsController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:game_id])
     @micropost = @game.microposts.find(params[:id])
   end
 
   def edit
-    @game = Game.find(params[:game_id])
     @micropost = @game.microposts.find(params[:id])
   end
 
   def update
-    @game = Game.find(params[:game_id])
     @micropost = @game.microposts.find(params[:id])
     if @micropost.update(micropost_params)
       redirect_to game_micropost_url, success: "編集しました"
@@ -38,7 +35,6 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:game_id])
     @micropost = @game.microposts.find(params[:id])
     @micropost.destroy
     redirect_to game_url(@game), success: "削除しました"
@@ -48,5 +44,9 @@ class MicropostsController < ApplicationController
 
     def micropost_params
       params.require(:micropost).permit(:content)
+    end
+
+    def set_game_find
+      @game = Game.find(params[:game_id])
     end
 end
