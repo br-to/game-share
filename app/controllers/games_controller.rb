@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all.order(created_at: :desc)
+    @games = Game.all.created_at_order
   end
 
   def new
