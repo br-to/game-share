@@ -1,0 +1,8 @@
+<h1>感想・レビューを編集</h1>
+<%= form_with(model: [@game, @micropost], local: true) do |f| %>
+  <p>
+    <%= f.label :content, "感想・レビュー" %>
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit "編集する" %></p>
+<% end %>
