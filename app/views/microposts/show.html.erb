@@ -3,6 +3,6 @@
 <p><%= @micropost.game.title %></p>
 <p><%= @micropost.content %></p>
 <% if current_user?(@micropost.user) %>
-<%= link_to "編集", "#" %>
-<%= link_to "削除", "#" %>
+<%= link_to "編集", edit_game_micropost_path(@game) %>
+<%= link_to "削除", game_micropost_path, method: :delete, data: { confirm: "削除してもよろしいですか" } %>
 <% end %>
