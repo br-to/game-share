@@ -1,5 +1,5 @@
 <% provide(:button_text, "登録する") %>
 <h1>ゲーム登録画面</h1>
 <p>プレイしたゲームのタイトルを登録してください</p>
-<%= render "form" %>
+<%= render "form", game: @game %>
 <%= link_to "マイページ", user_path(current_user)%>
