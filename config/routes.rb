@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   resources :users, only: [:new, :create, :show]
   resources :games do
-    resources :microposts, only: [:new, :create, :show, :edit, :create, :destroy]
+    resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
   end
   resource :profile, only: [:show, :edit, :update, :destroy]
 end

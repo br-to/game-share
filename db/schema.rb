@@ -21,14 +21,14 @@ ActiveRecord::Schema.define(version: 2019_08_09_012809) do
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
-  create_table "microposts", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
     t.integer "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_microposts_on_game_id"
-    t.index ["user_id"], name: "index_microposts_on_user_id"
+    t.index ["game_id"], name: "index_reviews_on_game_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

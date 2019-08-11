@@ -7,12 +7,12 @@
     <hr>
   <% end %>
 <% end %>
-<% if @user.microposts.any? %>
+<% if @user.reviews.any? %>
   <h3>あなたの感想</h3>
-  <% @games.zip(@microposts).each do |game, micropost| %>
-    <p><%= micropost.game_title %></p>
-    <%= link_to micropost.content, game_micropost_path(game, micropost) %>
-    <%= micropost.created_at %>
+  <% @games.zip(@reviews).each do |game, review| %>
+    <p><%= review.game_title %></p>
+    <%= link_to review.content, game_review_path(game, review) %>
+    <%= review.created_at %>
     <hr>
   <% end %>
 <% end %>
