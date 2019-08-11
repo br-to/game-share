@@ -1,9 +1,18 @@
 <h1>ようこそGame Shareへ！</h1>
 <%= @user.name %>
 <% if @user.games.any? %>
-  <h3>タイトル一覧</h3>
+  <h3>あなたが登録したゲーム</h3>
   <% @games.each do |game| %>
     <p><%=link_to game.title, game_path(game) %></p>
+    <hr>
+  <% end %>
+<% end %>
+<% if @user.reviews.any? %>
+  <h3>あなたの感想</h3>
+  <% @games.zip(@reviews).each do |game, review| %>
+    <p><%= review.game_title %></p>
+    <%= link_to review.content, game_review_path(game, review) %>
+    <%= review.created_at %>
     <hr>
   <% end %>
 <% end %>

@@ -1,0 +1,8 @@
+<h2>感想・レビュー詳細</h2>
+<p><%= @review.user_name %></p>
+<p><%= @review.game_title %></p>
+<p><%= @review.content %></p>
+<% if current_user?(@review.user) %>
+  <%= link_to "編集", edit_game_review_path(@game) %>
+  <%= link_to "削除", game_review_path, method: :delete, data: { confirm: "削除してもよろしいですか" } %>
+<% end %>

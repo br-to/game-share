@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   def create
     @game = current_user.games.build(game_params)
     if @game.save
-      redirect_to games_path, success: "登録しました"
+      redirect_to games_url, success: "登録しました"
     else
       flash.now[:warning] = "登録できませんでした"
       render "new"
@@ -19,6 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @reviews = @game.reviews.includes(:user)
   end
 
   def edit
