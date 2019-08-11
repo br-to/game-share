@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all.created_at_order
+    @games = Game.all.order(created_at: :desc)
   end
 
   def new
@@ -19,7 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @microposts = @game.microposts.includes(:user)
+    @reviews = @game.reviews.includes(:user)
   end
 
   def edit
