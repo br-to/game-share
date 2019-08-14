@@ -6,3 +6,14 @@
   <%= link_to "編集", edit_game_review_path(@game) %>
   <%= link_to "削除", game_review_path, method: :delete, data: { confirm: "削除してもよろしいですか" } %>
 <% end %>
+<% if @review.favorited_by?(current_user) %>
+  <p><%= link_to game_review_like_path(@game, @review), method: :delete do %></p>
+  <span><%= fa_stacked_icon "heart", text: "ナイスを取り消す" %></span>
+  <% end %>
+<% else %>
+  <p><%= link_to game_review_likes_path(@game, @review), method: :post do %></p>
+  <span><%= fa_stacked_icon "heart-o", text: "ナイス" %></span>
+  <% end %>
+<% end %>
+<p>ナイス数:<%= @review.likes.count %></p>
+<%= link_to "感想一覧に戻る", game_path(@game) %>
