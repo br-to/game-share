@@ -38,7 +38,7 @@ class GamesController < ApplicationController
 
   def destroy
     @game = current_user.games.find(params[:id])
-    @game.destroy
+    @game.destroy!
     redirect_to games_url, success: "削除しました"
   end
 

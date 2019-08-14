@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = @game.reviews.find(params[:id])
-    @review.destroy
+    @review.destroy!
     redirect_to game_url(@game), success: "削除しました"
   end
 

@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    current_user.destroy
+    current_user.destroy!
     redirect_to root_url, success: "ユーザー削除"
   end
 
