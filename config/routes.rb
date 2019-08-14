@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :games do
     resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
   end
+  resources :likes, only: [:create, :destroy]
   resource :profile, only: [:show, :edit, :update, :destroy]
 end
