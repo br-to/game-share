@@ -44,6 +44,9 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "bullet"
   gem "rubocop", require: false
+  gem "rubocop-performance"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
   gem "web-console", ">= 3.3.0"
 end
 
