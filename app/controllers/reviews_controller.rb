@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_game_find
+  before_action :set_game_find, only: [:new, :create]
+  before_action :set_review_find, only: [:show, :edit, :update, :destroy]
 
   def new
     @review = @game.reviews.build
@@ -17,17 +18,14 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = @game.reviews.find(params[:id])
   end
 
   def edit
-    @review = @game.reviews.find(params[:id])
   end
 
   def update
-    @review = @game.reviews.find(params[:id])
     if @review.update(review_params)
-      redirect_to game_review_url, success: "編集しました"
+      redirect_to review_url, success: "編集しました"
     else
       flash.now[:warning] = "編集できませんでした"
       render "edit"
@@ -35,9 +33,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = @game.reviews.find(params[:id])
     @review.destroy!
-    redirect_to game_url(@game), success: "削除しました"
+    redirect_to game_url(@review.game), success: "削除しました"
   end
 
   private
@@ -48,5 +45,9 @@ class ReviewsController < ApplicationController
 
     def set_game_find
       @game = Game.find(params[:game_id])
+    end
+
+    def set_review_find
+      @review = Review.find(params[:id])
     end
 end
