@@ -11,7 +11,7 @@
   <h3>あなたの感想</h3>
   <% @games.zip(@reviews).each do |game, review| %>
     <p><%= review.game_title %></p>
-    <%= link_to review.content, game_review_path(game, review) %>
+    <%= link_to review.content, review_path(review) %>
     <%= review.created_at %>
     <hr>
   <% end %>
