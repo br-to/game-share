@@ -15,6 +15,11 @@
     <%= review.created_at %>
     <hr>
   <% end %>
+  <h3>ナイスした感想</h3>
+  <% @user.likes_review.each do |review| %>
+    <p><%= review.game_title %></p>
+    <p><%= review.content %></p>
+  <% end %>
 <% end %>
 <%= link_to "トップへ", root_path %>
 <%= link_to "ゲームを登録する", new_game_path %>
