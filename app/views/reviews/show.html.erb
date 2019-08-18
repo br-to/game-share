@@ -7,7 +7,7 @@
   <%= link_to "削除", review_path(@review), method: :delete, data: { confirm: "削除してもよろしいですか" } %>
 <% end %>
 <% if @review.liked_by?(current_user) %>
-  <p><%= link_to like_path(@review.likes.find_by user: current_user), method: :delete do %></p>
+  <p><%= link_to like_path(@like), method: :delete do %></p>
   <span><%= fa_stacked_icon "heart", text: "ナイスを取り消す" %></span>
   <% end %>
 <% else %>

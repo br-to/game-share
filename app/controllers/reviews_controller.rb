@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @like = @review.likes.find_by(user: current_user)
   end
 
   def edit
@@ -25,7 +26,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to review_url, success: "編集しました"
+      redirect_to review_url(@review), success: "編集しました"
     else
       flash.now[:warning] = "編集できませんでした"
       render "edit"
