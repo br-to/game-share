@@ -9,7 +9,7 @@
 <% @reviews.each do |review| %>
   <p><%= link_to review.user_name, user_path(review.user) %></p>
   <%= link_to review.content, review_path(review) %>
-  <p><span><%= fa_icon "heart" %></span><%= review.likes_users.count %></p>
+  <p><span><%= fa_icon "heart" %></span><%= review.liked_users.count %></p>
   <%= review.created_at %>
   <hr>
 <% end %>
