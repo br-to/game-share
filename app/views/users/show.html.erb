@@ -16,7 +16,7 @@
     <hr>
   <% end %>
   <h3>ナイスした感想</h3>
-  <% @user.likes_review.each do |review| %>
+  <% @user.liked_review.each do |review| %>
     <p><%= review.game_title %></p>
     <p><%= review.content %></p>
   <% end %>
