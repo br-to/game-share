@@ -11,9 +11,14 @@
   <h3>あなたの感想</h3>
   <% @games.zip(@reviews).each do |game, review| %>
     <p><%= review.game_title %></p>
-    <%= link_to review.content, game_review_path(game, review) %>
+    <%= link_to review.content, review_path(review) %>
     <%= review.created_at %>
     <hr>
+  <% end %>
+  <h3>ナイスした感想</h3>
+  <% @user.liked_review.each do |review| %>
+    <p><%= review.game_title %></p>
+    <p><%= review.content %></p>
   <% end %>
 <% end %>
 <%= link_to "トップへ", root_path %>

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users, only: [:new, :create, :show]
-  resources :games do
-    resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :games, shallow: true do
+    resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :likes, only: [:create, :destroy]
+    end
   end
   resource :profile, only: [:show, :edit, :update, :destroy]
 end

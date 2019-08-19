@@ -8,7 +8,8 @@
 <h3><%= @game.title %>の感想・レビュー</h3>
 <% @reviews.each do |review| %>
   <p><%= link_to review.user_name, user_path(review.user) %></p>
-  <%= link_to review.content, game_review_path(@game, review) %>
-  <%= review.created_at%>
+  <%= link_to review.content, review_path(review) %>
+  <p><span><%= fa_icon "heart" %></span><%= review.liked_users.count %></p>
+  <%= review.created_at %>
   <hr>
 <% end %>
