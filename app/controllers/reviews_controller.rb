@@ -19,6 +19,8 @@ class ReviewsController < ApplicationController
 
   def show
     @like = @review.likes.find_by(user: current_user)
+    @comment = @review.comments.build
+    @comments = @review.comments.includes(:user)
   end
 
   def edit
