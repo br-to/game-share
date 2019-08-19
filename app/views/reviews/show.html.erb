@@ -25,7 +25,7 @@
   </div>
 <% end %>
 <%= form_with(model: [@review, @comment], local: true) do |f| %>
-  <%= f.text_field :content, placeholder: "コメントを入力" %>
+  <%= f.text_field :content, required: true, placeholder: "コメントを入力" %>
   <%= f.submit "コメントする", class: "btn btn-primary" %>
 <% end %>
         
