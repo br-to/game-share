@@ -11,5 +11,10 @@
   <%= link_to review.content, review_path(review) %>
   <p><span><%= fa_icon "heart" %></span><%= review.liked_users.count %></p>
   <%= review.created_at %>
+  <h3>コメント一覧</h3>
+  <% review.comments.each do |comment| %>
+    <%= comment.user_name %>
+    <%= comment.content %>
+  <% end %>
   <hr>
 <% end %>

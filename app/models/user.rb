@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :games, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_review, through: :likes, source: :review
   before_save :downcase_email

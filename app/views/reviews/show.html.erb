@@ -17,3 +17,17 @@
 <% end %>
 <p>ナイス数:<%= @review.likes.count %></p>
 <%= link_to "感想一覧に戻る", game_path(@review.game) %>
+<% @comments.each do |comment|  %>
+  <div>
+  <%= comment.user_name %>
+  <%= comment.content %>
+  <% if current_user?(comment.user) %>
+    <%= link_to "削除", comment_path(comment), method: :delete %>
+  <% end %>
+  </div>
+<% end %>
+<%= form_with(model: [@review, @comment], local: true) do |f| %>
+  <%= f.text_field :content, placeholder: "コメントを入力" %>
+  <%= f.submit "コメントする", class: "btn btn-primary" %>
+<% end %>
+        

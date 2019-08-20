@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
   resources :games, shallow: true do
     resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:create, :destroy]
       resources :likes, only: [:create, :destroy]
     end
   end

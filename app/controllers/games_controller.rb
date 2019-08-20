@@ -19,7 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @reviews = @game.reviews.includes(:user)
+    @reviews = @game.reviews.includes(:user, :comments)
   end
 
   def edit
