@@ -7,6 +7,9 @@ class CommentsController < ApplicationController
       redirect_to review_url(@review), success: "コメントしました"
     else
       flash.now[:warning] = "コメントできません"
+      @like = @review.likes.find_by(user: current_user)
+      @comment = @review.comments.build
+      @comments = @review.comments.includes(:user)
       render "reviews/show"
     end
   end
