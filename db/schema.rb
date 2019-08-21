@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_050747) do
     t.text "content"
     t.integer "user_id"
     t.integer "game_id"
+    t.string "netabare_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_reviews_on_game_id"
