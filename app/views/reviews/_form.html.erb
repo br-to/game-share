@@ -3,5 +3,9 @@
     <%= f.label :content, "感想・レビュー" %>
     <%= f.text_area :content %>
   </p>
+  <p>
+    <%= f.label :netabare_digest, "ネタバレを含む" %>
+    <%= f.check_box :netabare_digest, {}, "true", "false" %>
+  </p>
   <p><%= f.submit yield(:button_text) %></p>
 <% end %>
