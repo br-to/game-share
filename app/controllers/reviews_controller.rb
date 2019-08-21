@@ -1,6 +1,10 @@
 class ReviewsController < ApplicationController
-  before_action :set_game_find, only: [:new, :create]
+  before_action :set_game_find, only: [:index, :new, :create]
   before_action :set_review_find, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @reviews = @game.reviews.includes(:user, :comments)
+  end
 
   def new
     @review = @game.reviews.build
@@ -10,7 +14,11 @@ class ReviewsController < ApplicationController
     @review = @game.reviews.build(review_params)
     @review.user_id = current_user.id
     if @review.save
-      redirect_to game_url(@game), success: "感想・レビューを登録しました"
+      if @review.netabare_digest == "false"
+        redirect_to game_url(@game), success: "感想・レビューを登録しました"
+      else
+        redirect_to game_reviews_url(@game), success: "ネタバレ"
+      end
     else
       flash.now[:warning] = "登録できませんでした"
       render "new"
@@ -43,7 +51,7 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:content)
+      params.require(:review).permit(:content, :netabare_digest)
     end
 
     def set_game_find
