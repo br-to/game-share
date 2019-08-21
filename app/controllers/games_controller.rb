@@ -19,7 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @reviews = @game.reviews.where(is_netabare: "0").includes(:user, :comments)
+    @reviews = @game.reviews.where(is_netabare: false).includes(:user, :comments)
   end
 
   def edit

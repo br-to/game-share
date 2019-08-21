@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_review_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @reviews = @game.reviews.where(is_netabare: "1").includes(:user, :comments)
+    @reviews = @game.reviews.where(is_netabare: true).includes(:user, :comments)
   end
 
   def new
