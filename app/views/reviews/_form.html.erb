@@ -5,7 +5,7 @@
   </p>
   <p>
     <%= f.label :netabare_digest, "ネタバレを含む" %>
-    <%= f.check_box :netabare_digest, {}, "true", "false" %>
+    <%= f.check_box :is_netabare %>
   </p>
   <p><%= f.submit yield(:button_text) %></p>
 <% end %>
