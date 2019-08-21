@@ -8,17 +8,15 @@
 <p><%= link_to "ネタバレ", game_reviews_path(@game) %><p>
 <h3><%= @game.title %>の感想・レビュー</h3>
 <% @reviews.each do |review| %>
-  <% if review.netabare_digest == "false" %>
-    <h3>感想</h3>
-    <p><%= link_to review.user_name, user_path(review.user) %></p>
-    <%= link_to review.content, review_path(review) %>
-    <p><span><%= fa_icon "heart" %></span><%= review.liked_users.count %></p>
-    <%= review.created_at %>
-    <h3>コメント一覧</h3>
-    <% review.comments.each do |comment| %>
-      <%= comment.user_name %>
-      <%= comment.content %>
-    <% end %>
-    <hr>
-  <% end %> 
+  <h3>感想</h3>
+  <p><%= link_to review.user_name, user_path(review.user) %></p>
+  <%= link_to review.content, review_path(review) %>
+  <p><span><%= fa_icon "heart" %></span><%= review.likes.count %></p>
+  <%= review.created_at %>
+  <h3>コメント一覧</h3>
+  <% review.comments.each do |comment| %>
+    <%= comment.user_name %>
+    <%= comment.content %>
+  <% end %>
+  <hr>
 <% end %>
