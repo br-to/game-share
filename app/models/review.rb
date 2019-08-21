@@ -3,7 +3,6 @@ class Review < ApplicationRecord
   belongs_to :game
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :liked_users, through: :likes, source: :user
   delegate :name, to: :user, prefix: true
   delegate :title, to: :game, prefix: true
   validates :content, presence: true, length: { maximum: 255 }
