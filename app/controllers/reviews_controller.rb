@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_review_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @reviews = @game.reviews.where(is_netabare: true).includes(:user, :comments)
+    @reviews = @game.reviews.where(is_spoiled: true).includes(:user, :comments)
   end
 
   def new
@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     @review = @game.reviews.build(review_params)
     @review.user_id = current_user.id
     if @review.save
-      if @review.is_netabare?
+      if @review.is_spoiled?
         redirect_to game_reviews_url(@game), success: "ネタバレを含む感想・レビューを登録しました"
       else
         redirect_to game_url(@game), success: "感想・レビューを登録しました"
@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:content, :is_netabare)
+      params.require(:review).permit(:content, :is_spoiled)
     end
 
     def set_game_find

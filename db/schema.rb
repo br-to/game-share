@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_050747) do
     t.text "content"
     t.integer "user_id"
     t.integer "game_id"
-    t.boolean "is_netabare", default: false, null: false
+    t.boolean "is_spoiled", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_reviews_on_game_id"
