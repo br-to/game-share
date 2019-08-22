@@ -30,7 +30,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "font-awesome-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem "bootstrap-sass"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 
