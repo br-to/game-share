@@ -10,11 +10,32 @@
   </head>
 
   <body>
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>">
-        <%= message %>
-      </div>
+  <nav class="navbar navbar-static-top navbar-inverse" >
+    <div class="container" >
+      <div class="navbar-header">
+        <%= link_to "game share", root_path, class: "navbar-brand" %>
+      </div> 
+    <% if logged_in? %>
+      <ul class="nav navbar-nav navbar-right" >
+        <li><%= link_to "マイページ", user_path(current_user) %></li>
+        <li><%= link_to "ゲーム登録", new_game_path %></li>
+        <li><%= link_to "ゲーム一覧", games_path %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "game shareとは", help_path %></li>
+        <li><%= link_to "新規登録", signup_path %></li>
+        <li><%= link_to "ログイン", login_path %></li>
+      </ul>
     <% end %>
-    <%= yield %>
+    </div>
+  </nav>
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>">
+      <%= message %>
+    </div>
+  <% end %>
+  <%= yield %>
   </body>
 </html>
