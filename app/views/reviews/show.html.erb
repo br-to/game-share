@@ -29,6 +29,7 @@
       </div>
     <% end %>
     <%= form_with(model: [@review, @comment], local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
       <p><%= f.text_field :content, placeholder: "コメントを入力", class: "form-control" %></p>
       <p><%= f.submit "コメントする", class: "btn btn-warning" %></p>
     <% end %>

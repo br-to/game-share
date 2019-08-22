@@ -3,6 +3,7 @@
     <h1>新規登録</h1>
     <p>新規登録してGame Share!</p>
       <%= form_for(@user, url: signup_path) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
         <p>
           <%=f.label :name, "ユーザー名" %>
     　    <%= f.text_field :name, class: "form-control" %>
