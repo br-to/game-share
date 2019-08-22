@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      review: レビュー
+    attributes:
+      review:
+        content: 感想・レビュー
