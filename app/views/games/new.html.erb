@@ -1,5 +1,8 @@
 <% provide(:button_text, "登録する") %>
-<h1>ゲーム登録画面</h1>
-<p>プレイしたゲームのタイトルを登録してください</p>
-<%= render "form", game: @game %>
-<%= link_to "マイページ", user_path(current_user)%>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>ゲーム登録画面</h1>
+    <p>プレイしたゲームのタイトルを登録してください</p>
+    <%= render "form", game: @game %>
+  </div>
+</div>

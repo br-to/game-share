@@ -1,3 +1,7 @@
 <% provide(:button_text, "登録する") %>
-<h1>感想・レビューを登録する</h1>
-<%= render "form", game: @game, review: @review  %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>感想・レビューを登録する</h1>
+    <%= render "form", game: @game, review: @review  %>
+  </div>
+</div>
