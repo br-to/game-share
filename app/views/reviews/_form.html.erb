@@ -3,5 +3,9 @@
     <%= f.label :content, "感想・レビュー" %>
     <%= f.text_area :content %>
   </p>
+  <p>
+    <%= f.label :is_spoiled, "ネタバレを含む" %>
+    <%= f.check_box :is_spoiled %>
+  </p>
   <p><%= f.submit yield(:button_text) %></p>
 <% end %>

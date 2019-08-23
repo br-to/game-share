@@ -5,11 +5,13 @@
 <% end %>
 <p><%= link_to "感想・レビューを書く", new_game_review_path(@game) %></p>
 <p><%= link_to "ゲーム一覧", games_path %></p>
+<p><%= link_to "ネタバレ", game_reviews_path(@game) %><p>
 <h3><%= @game.title %>の感想・レビュー</h3>
 <% @reviews.each do |review| %>
+  <h3>感想</h3>
   <p><%= link_to review.user_name, user_path(review.user) %></p>
   <%= link_to review.content, review_path(review) %>
-  <p><span><%= fa_icon "heart" %></span><%= review.liked_users.count %></p>
+  <p><span><%= fa_icon "heart" %></span><%= review.likes.count %></p>
   <%= review.created_at %>
   <h3>コメント一覧</h3>
   <% review.comments.each do |comment| %>

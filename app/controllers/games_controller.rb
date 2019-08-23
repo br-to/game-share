@@ -19,7 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @reviews = @game.reviews.includes(:user, :comments)
+    @reviews = @game.reviews.where(is_spoiled: false).includes(:user, :comments)
   end
 
   def edit
