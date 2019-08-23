@@ -3,7 +3,6 @@
   <p>ログインしとります</p>
   <%= link_to "プロフィール", profile_path %>
 <% else %>
-  <%= link_to "GameShareとは", "/help" %>
-  <%= link_to "新規登録する", "/signup" %>
-  <%= link_to "ログイン", "/login" %>
+  <%= link_to "新規登録する", signup_path, class: "btn btn-lg btn-warning" %>
+  <%= link_to "ログイン", login_path, class: "btn btn-lg btn-warning" %>
 <% end %>
