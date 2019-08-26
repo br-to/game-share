@@ -19,7 +19,7 @@
     <p><%= time_ago_in_words(review.created_at) %>前に投稿されました<p>
     <h3>コメント一覧</h3>
     <% review.comments.each do |comment| %>
-      <p><%= comment.user_name %></p>
+      <p><%= link_to comment.user_name, user_path(comment.user) %></p>
       <p><%= comment.content %></p>
       <p><%= time_ago_in_words(comment.created_at) %>前にコメントされました<p>
     <% end %>
