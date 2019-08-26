@@ -1,7 +1,9 @@
-<p><%= current_user.name %></p>
-<p><%= current_user.email %></p>
-<%= link_to "マイページ", user_path(current_user) %>
-<%= link_to "ゲーム一覧", games_path %>
-<%= link_to "編集", edit_profile_path %>
-  <%= link_to "削除", profile_path, method: :delete, data: { confirm: "削除してもよろしいですか" } %>
-  <%= link_to "ログアウト", logout_path, method: :delete %>
+<h1>ユーザー情報</h1>
+<p>ユーザー名： <%= current_user.name %></p>
+<p>メールアドレス： <%= current_user.email %></p>
+<p><%= link_to edit_profile_path do %></p>
+  <span><%= fa_icon "user", text: "ユーザー編集" %></span>
+<% end %>
+<p><%= link_to profile_path, method: :delete, data: { confirm: "削除してもよろしいですか" } do %></p>
+  <span><%= fa_icon "user-times", text: "ユーザー削除" %></span>
+<% end %>
