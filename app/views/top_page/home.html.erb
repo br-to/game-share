@@ -1,8 +1,13 @@
 <h1>Game Share</h1>
 <% if logged_in? %>
-  <p>ログインしとります</p>
-  <%= link_to "プロフィール", profile_path %>
+  <div class="center">
+    <h3>Game shareはゲームの感想やレビューを簡単に共有できるサービスです。</h3>
+    <%= link_to "ゲームを登録する", new_game_path, class: "btn btn-warning" %>
+  </div>
 <% else %>
-  <%= link_to "新規登録する", signup_path, class: "btn btn-lg btn-warning" %>
-  <%= link_to "ログイン", login_path, class: "btn btn-lg btn-warning" %>
+  <div class="center">
+    <h3>Game shareはゲームの感想やレビューを簡単に共有できるサービスです。</h3>
+    <%= link_to "新規登録する", signup_path, class: "btn btn-lg btn-warning" %>
+    <%= link_to "ログイン", login_path, class: "btn btn-lg btn-warning" %>
+  </div>
 <% end %>
