@@ -2,5 +2,5 @@
 <% @games.each do |game| %>
   <p><%=link_to game.title, game_path(game) %></p>
   <hr>
-  <%= will_paginate %>
 <% end %>
+ <%= paginate @games %>
