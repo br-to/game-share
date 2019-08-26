@@ -1,4 +1,6 @@
+<h1>ゲーム一覧</h1>
 <% @games.each do |game| %>
-    <p><%=link_to game.title, game_path(game) %></p>
-    <hr>
+  <p><%=link_to game.title, game_path(game) %></p>
+  <hr>
+  <%= will_paginate %>
 <% end %>
