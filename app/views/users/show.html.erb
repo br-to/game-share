@@ -1,29 +1,33 @@
-<div class="col-md-4">
-  <h1>マイページ</h1>
-  <h3>ユーザー名:<%= @user.name %></h3>
-  <%= link_to "ゲームを登録する", new_game_path, class: "btn btn-warning" %>
-</div>
-<div class="col-md-8">
-  <% if @user.games.any? %>
-    <h3><%= @user.name %>が登録したゲーム</h3>
-    <% @games.each do |game| %>
-      <p><%=link_to game.title, game_path(game) %></p>
-      <hr>
-    <% end %>
-  <% end %>
-  <% if @user.reviews.any? %>
-    <h3><%= @user.name %>の感想</h3>
-    <% @games.zip(@reviews).each do |game, review| %>
-      <p><%= review.game_title %></p>
-      <%= link_to review.content, review_path(review) %>
-      <p><%= time_ago_in_words(review.created_at) %>前に投稿されました<p>
-      <hr>
-    <% end %>
-    <h3><%= @user.name %>がナイスした感想</h3>
-    <% @user.liked_review.each do |review| %>
-      <p><%= review.game_title %></p>
-      <p><%= review.content %></p>
-    <% end %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h1>マイページ</h1>
+      <h3>ユーザー名:<%= @user.name %></h3>
+      <%= link_to "ゲームを登録する", new_game_path, class: "btn btn-warning" %>
+    </div>
+    <div class="col-md-8">
+      <% if @user.games.any? %>
+        <h3><%= @user.name %>が登録したゲーム</h3>
+        <% @games.each do |game| %>
+        <p><%=link_to game.title, game_path(game) %></p>
+        <hr>
+        <% end %>
+        <% end %>
+      <% if @user.reviews.any? %>
+        <h3><%= @user.name %>の感想</h3>
+        <% @games.zip(@reviews).each do |game, review| %>
+          <p><%= review.game_title %></p>
+          <%= link_to review.content, review_path(review) %>
+          <p><%= time_ago_in_words(review.created_at) %>前に投稿されました<p>
+          <hr>
+        <% end %>
+        <h3><%= @user.name %>がナイスした感想</h3>
+        <% @user.liked_review.each do |review| %>
+          <p><%= review.game_title %></p>
+          <p><%= review.content %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 

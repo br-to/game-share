@@ -1,42 +1,44 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h2>感想・レビュー詳細</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>感想・レビュー詳細</h2>
       <p><%= @review.user_name %></p>
       <p><%= @review.game_title %></p>
       <%= @review.content %>
-    <% if current_user?(@review.user) %>
-      <%= link_to edit_review_path(@review) do %>
-        <span><%= fa_icon "edit", text: "感想・レビュー編集" %></span>
-      <% end %>
-      <%= link_to review_path(@review), method: :delete, data: { confirm: "削除してもよろしいですか" } do %>
-        <span><%= fa_icon "trash", text: "感想・レビュー削除" %></span>
-      <% end %>
-    <% end %>
-    <% if @review.liked_by?(current_user) %>
-      <p><%= link_to like_path(@like), method: :delete do %></p>
-      <span><%= fa_icon "heart", text: "ナイスを取り消す" %></span>
-      <% end %>
-    <% else %>
-      <p><%= link_to review_likes_path(@review), method: :post do %></p>
-      <span><%= fa_icon "heart-o", text: "ナイス" %></span>
-      <% end %>
-    <% end %>
-    <p>ナイス数:<%= @review.likes.count %></p>
-    <% @comments.each do |comment| %>
-      <p><%= comment.user_name %></p>
-      <%= comment.content %>
-      <% if current_user?(comment.user) %>
-        <%= link_to comment_path(comment), method: :delete, data: { confirm: "削除してもよろしいですか" } do %>
-          <span><%= fa_icon "trash", text: "コメント削除" %></span>
+      <% if current_user?(@review.user) %>
+        <%= link_to edit_review_path(@review) do %>
+          <span><%= fa_icon "edit", text: "感想・レビュー編集" %></span>
+        <% end %>
+        <%= link_to review_path(@review), method: :delete, data: { confirm: "削除してもよろしいですか" } do %>
+          <span><%= fa_icon "trash", text: "感想・レビュー削除" %></span>
         <% end %>
       <% end %>
-      <hr>
-    <% end %>
-    <%= form_with(model: [@review, @comment], local: true) do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
-      <p><%= f.text_field :content, placeholder: "コメントを入力", class: "form-control" %></p>
-      <p><%= f.submit "コメントする", class: "btn btn-warning" %></p>
-    <% end %>
-    <%= link_to "感想一覧に戻る", game_path(@review.game) %>
+      <% if @review.liked_by?(current_user) %>
+        <p><%= link_to like_path(@like), method: :delete do %></p>
+          <span><%= fa_icon "heart", text: "ナイスを取り消す" %></span>
+        <% end %>
+      <% else %>
+        <p><%= link_to review_likes_path(@review), method: :post do %></p>
+          <span><%= fa_icon "heart-o", text: "ナイス" %></span>
+        <% end %>
+      <% end %>
+      <p>ナイス数:<%= @review.likes.count %></p>
+      <% @comments.each do |comment| %>
+        <p><%= comment.user_name %></p>
+        <%= comment.content %>
+        <% if current_user?(comment.user) %>
+          <%= link_to comment_path(comment), method: :delete, data: { confirm: "削除してもよろしいですか" } do %>
+            <span><%= fa_icon "trash", text: "コメント削除" %></span>
+          <% end %>
+        <% end %>
+        <hr>
+      <% end %>
+      <%= form_with(model: [@review, @comment], local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+        <p><%= f.text_field :content, placeholder: "コメントを入力", class: "form-control" %></p>
+        <p><%= f.submit "コメントする", class: "btn btn-warning" %></p>
+      <% end %>
+      <%= link_to "感想一覧に戻る", game_path(@review.game) %>
+    </div>
   </div>
 </div>      
