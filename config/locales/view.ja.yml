@@ -1,0 +1,60 @@
+ja:
+  app:
+    title: game share
+    description: game shareはゲームの感想やレビューを簡単に共有できるサービスです。
+  flash:
+    comment_destroy_success: コメントを削除しました
+    comment_registration_success: コメントを登録しました
+    login_success: ログインしました
+    login_failed: ログインできませんでした
+    logout_success: ログアウトしました
+    game_destroy_success: ゲームタイトルを削除しました
+    game_registration_success: ゲームタイトルを登録しました
+    game_update_success: ゲームタイトルを更新しました
+    registration_failed: 登録できませんでした
+    review_registration_success: 感想・レビューを登録しました
+    review_update_success: 感想・レビューを更新しました
+    review_destroy_success: 感想・レビューを削除しました
+    spoiler_registration_success: ネタバレを含む感想・レビューを登録しました
+    user_destroy_success: ユーザーを削除しました
+    user_registration_success: ユーザーを登録しました
+    user_update_success: ユーザー情報を更新しました
+    update_failed: 更新できませんでした
+  link:
+    back_review_index: 感想一覧に戻る
+    delete_user: ユーザー削除
+    delete_game: ゲームタイトル削除
+    delete_review: 感想・レビュー削除
+    delete_like: ナイスを取り消す
+    delete_comment: コメントを削除
+    logout: ログアウト
+    profile: プロフィール
+    register_like: ナイス
+    review: 感想・レビュー
+    spoiler: ネタバレ
+  title:
+    comment: コメント
+    edit: 編集する
+    game_index: ゲーム一覧
+    edit_game: ゲームタイトル編集
+    edit_review: 感想・レビュー編集
+    edit_user: ユーザー編集
+    login: ログイン
+    menu: メニュー
+    mypage: マイページ
+    new_registration: 新規登録
+    register: 登録する
+    register_game: ゲームタイトル登録
+    register_review: 感想・レビューを書く
+    register_comment: コメントを入力する
+    review_show: 感想・レビュー詳細
+    user_information: ユーザー情報
+  message: 
+    delete_confirmation: 削除してもよろしいですか?
+    game_review: の感想・レビュー
+    game_spoiled: のネタバレ
+    likes_count: ナイス数
+    user_register_game: が登録したゲーム
+    user_posted: 前に投稿されました
+    user_commented: 前にコメントされました
+    user_liked_review: がナイスした感想

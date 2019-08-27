@@ -1,7 +1,0 @@
-ja:
-  activerecord:
-    models:
-      game: ゲーム
-    attributes:
-      game:
-        title: ゲームタイトル
