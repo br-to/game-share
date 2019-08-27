@@ -1,6 +1,6 @@
-<h1>ゲーム一覧</h1>
+<h1><%=t ("title.game_index") %></h1>
 <% @games.each do |game| %>
   <p><%=link_to game.title, game_path(game) %></p>
   <hr>
 <% end %>
- <%= paginate @games %>
+<%= paginate @games %>

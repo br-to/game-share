@@ -1,9 +1,9 @@
-<h1>ユーザー情報</h1>
-<p>ユーザー名： <%= current_user.name %></p>
-<p>メールアドレス： <%= current_user.email %></p>
+<h1><%=t "title.user_information" %></h1>
+<p><%= User.human_attribute_name :name %> <%= current_user.name %></p>
+<p><%= User.human_attribute_name :email %> <%= current_user.email %></p>
 <p><%= link_to edit_profile_path do %></p>
-  <span><%= fa_icon "user", text: "ユーザー編集" %></span>
+  <span><%= fa_icon "user", text: t("title.edit_user") %></span>
 <% end %>
-<p><%= link_to profile_path, method: :delete, data: { confirm: "削除してもよろしいですか" } do %></p>
-  <span><%= fa_icon "user-times", text: "ユーザー削除" %></span>
+<p><%= link_to profile_path, method: :delete, data: { confirm: t("message.delete_confirmation") } do %></p>
+  <span><%= fa_icon "user-times", text: t("link.delete_user") %></span>
 <% end %>

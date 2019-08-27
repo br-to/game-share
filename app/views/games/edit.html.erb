@@ -1,8 +1,8 @@
-<% provide(:button_text, "編集する") %>
+<% provide(:button_text, t("title.edit")) %>
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h1>ゲームタイトル編集画面</h1>
+      <h1><%=t ("title.edit_game") %></h1>
       <%= render "form", game: @game, class: "form-control" %>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <%= form_with(model: game, local: true) do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
   <p>
-    <%= f.label :title, "ゲームタイトル" %>
+    <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
   </p>
   <p><%= f.submit yield(:button_text), class: "btn btn-warning" %></p>

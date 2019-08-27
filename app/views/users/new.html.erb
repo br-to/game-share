@@ -1,27 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h1>新規登録</h1>
-      <p>新規登録してGame Share!</p>
+      <h1><%=t "title.new_registration" %></h1>
         <%= form_for(@user, url: signup_path) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
           <p>
-            <%=f.label :name, "ユーザー名" %>
+            <%=f.label :name %>
     　      <%= f.text_field :name, class: "form-control" %>
           </p>
           <p>
-            <%= f.label :email, "メールアドレス" %>
+            <%= f.label :email %>
             <%= f.email_field :email, class: "form-control" %>
           </p>
           <p>
-            <%= f.label :password, "パスワード" %>
+            <%= f.label :password %>
             <%= f.password_field :password, class: "form-control" %>
           </p>
           <p>
-            <%= f.label :password_cofirmation, "パスワードの確認" %>
+            <%= f.label :password_cofirmation %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </p>
-          <p><%= f.submit "登録する", class: "btn btn-warning" %></p>
+          <p><%= f.submit t("title.register"), class: "btn btn-warning" %></p>
         <% end %>
     </div>
   </div>

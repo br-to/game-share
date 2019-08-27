@@ -1,11 +1,11 @@
 <%= form_with(model: [game, review], local: true) do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
   <p>
-    <%= f.label :content, "感想・レビュー" %>
+    <%= f.label :content %>
     <%= f.text_area :content, class: "form-control" %>
   </p>
   <p>
-    <%= f.label :is_spoiled, "ネタバレを含む" %>
+    <%= f.label :is_spoiled %>
     <%= f.check_box :is_spoiled %>
   </p>
   <p><%= f.submit yield(:button_text), class: "btn btn-warning" %></p>
