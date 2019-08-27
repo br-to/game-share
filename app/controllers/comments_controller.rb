@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
     @comment = @review.comments.build(params_comment)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to review_url(@review), success: "コメントしました"
+      redirect_to review_url(@review), success: t(:comment_registration_success, scope: :flash)
     else
-      flash.now[:warning] = "コメントできません"
+      flash.now[:warning] = t(:registration_failed, scope: :flash)
       @like = @review.likes.find_by(user: current_user)
       @comments = @review.comments.includes(:user)
       render "reviews/show"
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = current_user.comments.find(params[:id])
     @comment.destroy!
-    redirect_to review_url(@comment.review), success: "コメントを削除しました"
+    redirect_to review_url(@comment.review), success: t(:comment_destroy_success, scope: :flash)
   end
 
   private

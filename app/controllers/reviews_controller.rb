@@ -15,12 +15,12 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     if @review.save
       if @review.is_spoiled?
-        redirect_to game_reviews_url(@game), success: "ネタバレを含む感想・レビューを登録しました"
+        redirect_to game_reviews_url(@game), success: t(:spoiler_registration_success, scope: :flash)
       else
-        redirect_to game_url(@game), success: "感想・レビューを登録しました"
+        redirect_to game_url(@game), success: t(:review_registration_success, scope: :flash)
       end
     else
-      flash.now[:warning] = "登録できませんでした"
+      flash.now[:warning] = t(:registration_failed, scope: :flash)
       render "new"
     end
   end
@@ -36,16 +36,16 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to review_url(@review), success: "編集しました"
+      redirect_to review_url(@review), success: t(:review_update_success, scope: :flash)
     else
-      flash.now[:warning] = "編集できませんでした"
+      flash.now[:warning] = t(:update_failed, scope: :flash)
       render "edit"
     end
   end
 
   def destroy
     @review.destroy!
-    redirect_to game_url(@review.game), success: "削除しました"
+    redirect_to game_url(@review.game), success: t(:review_destroy_success, scope: :flash)
   end
 
   private
