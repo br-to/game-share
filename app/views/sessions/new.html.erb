@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h1><%=t "title.login" %></h1>
+      <h1><%= t("title.login") %></h1>
         <%= form_for User.new, url: login_path, as: :session do |f| %>
           <p>
             <%= f.label :email %>

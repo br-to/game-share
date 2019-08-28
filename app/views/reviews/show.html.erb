@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h2><%=t ("title.review_show") %></h2>
+      <h2><%= t("title.review_show") %></h2>
       <p><%= @review.user_name %></p>
       <p><%= @review.game_title %></p>
       <%= @review.content %>
@@ -22,7 +22,7 @@
           <span><%= fa_icon "heart-o", text: t("link.register_like") %></span>
         <% end %>
       <% end %>
-      <p><%=t ("message.likes_count") %> <%= @review.likes.count %></p>
+      <p><%= t("message.likes_count") %> <%= @review.likes.count %></p>
       <% @comments.each do |comment| %>
         <p><%= comment.user_name %></p>
         <%= comment.content %>

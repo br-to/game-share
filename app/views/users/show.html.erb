@@ -1,27 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <h1><%=t "title.mypage" %></h1>
+      <h1><%= t("title.mypage") %></h1>
       <h3><%= User.human_attribute_name :name %><%= @user.name %></h3>
       <%= link_to t("title.register_game"), new_game_path, class: "btn btn-warning" %>
     </div>
     <div class="col-md-8">
       <% if @user.games.any? %>
-        <h3><%= @user.name %><%=t ("message.user_register_game") %></h3>
+        <h3><%= @user.name %><%= t("message.user_register_game") %></h3>
         <% @games.each do |game| %>
         <p><%=link_to game.title, game_path(game) %></p>
         <hr>
         <% end %>
         <% end %>
       <% if @user.reviews.any? %>
-        <h3><%= @user.name %><%=t ("message.user_review") %></h3>
+        <h3><%= @user.name %><%= t("message.game_review") %></h3>
         <% @games.zip(@reviews).each do |game, review| %>
           <p><%= review.game_title %></p>
           <%= link_to review.content, review_path(review) %>
-          <p><%= time_ago_in_words(review.created_at) %><%=t ("message.user_posted") %><p>
+          <p><%= time_ago_in_words(review.created_at) %><%= t("message.user_posted") %><p>
           <hr>
         <% end %>
-        <h3><%= @user.name %><%=t ("message.user_liked_review") %></h3>
+        <h3><%= @user.name %><%= t("message.user_liked_review") %></h3>
         <% @user.liked_review.each do |review| %>
           <p><%= review.game_title %></p>
           <p><%= review.content %></p>

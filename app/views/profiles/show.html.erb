@@ -1,4 +1,4 @@
-<h1><%=t "title.user_information" %></h1>
+<h1><%= t("title.user_information") %></h1>
 <p><%= User.human_attribute_name :name %> <%= current_user.name %></p>
 <p><%= User.human_attribute_name :email %> <%= current_user.email %></p>
 <p><%= link_to edit_profile_path do %></p>

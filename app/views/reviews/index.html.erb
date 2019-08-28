@@ -12,18 +12,18 @@
         <li class="nav-item">
           <%= link_to t("link.spoiler"), game_reviews_path(@game), class: "nav-link" %>
         </li>
-      </ul>
-      <h3><%= @game.title %><%=t ("message.game_spoiled") %></h3>
+      </ul> 
+      <h3><%= @game.title %><%= t("message.game_spoiled") %></h3>
       <% @reviews.each do |review| %>
         <p><%= link_to review.user_name, user_path(review.user) %></p>
         <%= link_to review.content, review_path(review) %>
         <p><span><%= fa_icon "heart" %></span><%= review.likes.count %></p>
-        <p><%= time_ago_in_words(review.created_at) %><%=t ("message.user_posted") %><p>
-        <h3><%=t ("title.comment") %></h3>
+        <p><%= time_ago_in_words(review.created_at) %><%= t("message.user_posted") %><p>
+        <h3><%= t("title.comment") %></h3>
         <% review.comments.each do |comment| %>
           <p><%= link_to comment.user_name, user_path(comment.user) %></p>
           <p><%= comment.content %></p>
-          <p><%= time_ago_in_words(comment.created_at) %><%=t ("message.user_commented") %><p>
+          <p><%= time_ago_in_words(comment.created_at) %><%= t("message.user_commented") %><p>
         <% end %>
         <hr>
       <% end %>
