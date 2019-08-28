@@ -9,17 +9,17 @@
       <% if @user.games.any? %>
         <h3><%= @user.name %><%= t("message.user_register_game") %></h3>
         <% @games.each do |game| %>
-        <p><%=link_to game.title, game_path(game) %></p>
-        <hr>
-        <% end %>
-        <% end %>
+          <p><%=link_to game.title, game_path(game) %></p>
+          <hr>
+      <% end %>
       <% if @user.reviews.any? %>
         <h3><%= @user.name %><%= t("message.game_review") %></h3>
-        <% @games.zip(@reviews).each do |game, review| %>
+        <% @reviews.each do |review| %>
           <p><%= review.game_title %></p>
           <%= link_to review.content, review_path(review) %>
           <p><%= time_ago_in_words(review.created_at) %><%= t("message.user_posted") %><p>
           <hr>
+        <% end %>
         <% end %>
         <h3><%= @user.name %><%= t("message.user_liked_review") %></h3>
         <% @user.liked_review.each do |review| %>
