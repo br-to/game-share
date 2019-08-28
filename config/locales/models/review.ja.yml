@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      review:
+        content: 感想・レビュー
+        is_spoiled: ネタバレを含む

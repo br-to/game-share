@@ -1,0 +1,19 @@
+ja:
+  flash:
+    comment_destroy_success: コメントを削除しました
+    comment_registration_success: コメントを登録しました
+    login_success: ログインしました
+    login_failed: ログインできませんでした
+    logout_success: ログアウトしました
+    game_destroy_success: ゲームタイトルを削除しました
+    game_registration_success: ゲームタイトルを登録しました
+    game_update_success: ゲームタイトルを更新しました
+    registration_failed: 登録できませんでした
+    review_registration_success: 感想・レビューを登録しました
+    review_update_success: 感想・レビューを更新しました
+    review_destroy_success: 感想・レビューを削除しました
+    spoiler_registration_success: ネタバレを含む感想・レビューを登録しました
+    user_destroy_success: ユーザーを削除しました
+    user_registration_success: ユーザーを登録しました
+    user_update_success: ユーザー情報を更新しました
+    update_failed: 更新できませんでした
