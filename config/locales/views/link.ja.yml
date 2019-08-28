@@ -1,0 +1,13 @@
+ja:
+  link:
+    back_review_index: 感想一覧に戻る
+    delete_user: ユーザー削除
+    delete_game: ゲームタイトル削除
+    delete_review: 感想・レビュー削除
+    delete_like: ナイスを取り消す
+    delete_comment: コメントを削除
+    logout: ログアウト
+    profile: プロフィール
+    register_like: ナイス
+    review: 感想・レビュー
+    spoiler: ネタバレ

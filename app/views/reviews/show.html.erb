@@ -1,33 +1,44 @@
-<h2>感想・レビュー詳細</h2>
-<p><%= @review.user_name %></p>
-<p><%= @review.game_title %></p>
-<p><%= @review.content %></p>
-<% if current_user?(@review.user) %>
-  <%= link_to "編集", edit_review_path(@review) %>
-  <%= link_to "削除", review_path(@review), method: :delete, data: { confirm: "削除してもよろしいですか" } %>
-<% end %>
-<% if @review.liked_by?(current_user) %>
-  <p><%= link_to like_path(@like), method: :delete do %></p>
-  <span><%= fa_stacked_icon "heart", text: "ナイスを取り消す" %></span>
-  <% end %>
-<% else %>
-  <p><%= link_to review_likes_path(@review), method: :post do %></p>
-  <span><%= fa_stacked_icon "heart-o", text: "ナイス" %></span>
-  <% end %>
-<% end %>
-<p>ナイス数:<%= @review.likes.count %></p>
-<%= link_to "感想一覧に戻る", game_path(@review.game) %>
-<% @comments.each do |comment|  %>
-  <div>
-  <%= comment.user_name %>
-  <%= comment.content %>
-  <% if current_user?(comment.user) %>
-    <%= link_to "削除", comment_path(comment), method: :delete %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2><%= t("title.review_show") %></h2>
+      <p><%= @review.user_name %></p>
+      <p><%= @review.game_title %></p>
+      <%= @review.content %>
+      <% if current_user?(@review.user) %>
+        <%= link_to edit_review_path(@review) do %>
+          <span><%= fa_icon "edit", text: t("title.edit_review") %></span>
+        <% end %>
+        <%= link_to review_path(@review), method: :delete, data: { confirm: t("message.delete_confirmation") } do %>
+          <span><%= fa_icon "trash", text: t("link.delete_review") %></span>
+        <% end %>
+      <% end %>
+      <% if @review.liked_by?(current_user) %>
+        <p><%= link_to like_path(@like), method: :delete do %></p>
+          <span><%= fa_icon "heart", text: t("link.delete_like") %></span>
+        <% end %>
+      <% else %>
+        <p><%= link_to review_likes_path(@review), method: :post do %></p>
+          <span><%= fa_icon "heart-o", text: t("link.register_like") %></span>
+        <% end %>
+      <% end %>
+      <p><%= t("message.likes_count") %> <%= @review.likes.count %></p>
+      <% @comments.each do |comment| %>
+        <p><%= comment.user_name %></p>
+        <%= comment.content %>
+        <% if current_user?(comment.user) %>
+          <%= link_to comment_path(comment), method: :delete, data: { confirm: t("message.delete_confirmation") } do %>
+            <span><%= fa_icon "trash", text: t("link.delete_comment") %></span>
+          <% end %>
+        <% end %>
+        <hr>
+      <% end %>
+      <%= form_with(model: [@review, @comment], local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+        <p><%= f.text_field :content, placeholder: t("title.register_comment"), class: "form-control" %></p>
+        <p><%= f.submit t("title.comment"), class: "btn btn-warning" %></p>
+      <% end %>
+      <%= link_to t("link.back_review_index"), game_path(@review.game) %>
+    </div>
   </div>
-<% end %>
-<%= form_with(model: [@review, @comment], local: true) do |f| %>
-  <%= f.text_field :content, placeholder: "コメントを入力" %>
-  <%= f.submit "コメントする", class: "btn btn-primary" %>
-<% end %>
-        
+</div>      

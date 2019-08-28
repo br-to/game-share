@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all.order(created_at: :desc)
+    @games = Game.order(created_at: :desc).page params[:page]
   end
 
   def new
@@ -10,9 +10,9 @@ class GamesController < ApplicationController
   def create
     @game = current_user.games.build(game_params)
     if @game.save
-      redirect_to games_url, success: "登録しました"
+      redirect_to games_url, success: t(:game_registration_success, scope: :flash)
     else
-      flash.now[:warning] = "登録できませんでした"
+      flash.now[:warning] = t(:registration_failed, scope: :flash)
       render "new"
     end
   end
@@ -29,9 +29,9 @@ class GamesController < ApplicationController
   def update
     @game = current_user.games.find(params[:id])
     if @game.update(game_params)
-      redirect_to game_url, success: "編集しました"
+      redirect_to game_url, success: t(:game_update_success, scope: :flash)
     else
-      flash.now[:warning] = "編集できませんでした"
+      flash.now[:warning] = t(:update_failed, scope: :flash)
       render "edit"
     end
   end
@@ -39,7 +39,7 @@ class GamesController < ApplicationController
   def destroy
     @game = current_user.games.find(params[:id])
     @game.destroy!
-    redirect_to games_url, success: "削除しました"
+    redirect_to games_url, success: t(:game_destroy_success, scope: :flash)
   end
 
   private

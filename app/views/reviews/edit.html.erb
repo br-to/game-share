@@ -1,3 +1,9 @@
-<% provide(:button_text, "編集する") %>
-<h1>感想・レビューを編集</h1>
-<%= render "form", game: @game, review: @review %>
+<% provide(:button_text, t("title.edit")) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1><%= t("title.edit_review") %></h1>
+      <%= render "form", game: @game, review: @review %>
+    </div>
+  </div>
+</div>

@@ -10,6 +10,7 @@ module GameShare
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.i18n.default_locale = :ja
     config.action_view.field_error_proc = proc do |html_tag, _instance|
       html_tag.to_s.html_safe
     end
@@ -22,5 +23,6 @@ module GameShare
       g.helper false
       g.test_framework false
     end
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "*", "*.ja.yml")]
   end
 end

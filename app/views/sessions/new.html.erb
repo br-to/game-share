@@ -1,19 +1,19 @@
-<h1>ログイン</h1>
-
-<div>
-  <%= form_for :session, url: login_path do |f| %>
-    <p>
-      <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email %>
-    </p>
-
-    <p>
-      <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password %>
-    </p>
-
-    <p><%= f.submit "ログイン" %></p>
-  <% end %>
-  <%= link_to "新規登録はこちら", "/signup" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1><%= t("title.login") %></h1>
+        <%= form_for User.new, url: login_path, as: :session do |f| %>
+          <p>
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control" %>
+          </p>
+          <p>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+          </p>
+          <p><%= f.submit t("title.login"), class: "btn btn-warning" %></p>
+        <% end %>
+      <%= link_to t("title.new_registration"), signup_path %>
+    </div>
+  </div>
 </div>
-

@@ -1,0 +1,18 @@
+ja:
+  title:
+    comment: コメント
+    edit: 編集する
+    game_index: ゲーム一覧
+    edit_game: ゲームタイトル編集
+    edit_review: 感想・レビュー編集
+    edit_user: ユーザー編集
+    login: ログイン
+    menu: メニュー
+    mypage: マイページ
+    new_registration: 新規登録
+    register: 登録する
+    register_game: ゲームタイトル登録
+    register_review: 感想・レビューを書く
+    register_comment: コメントを入力する
+    review_show: 感想・レビュー詳細
+    user_information: ユーザー情報

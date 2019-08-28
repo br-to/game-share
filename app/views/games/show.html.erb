@@ -1,22 +1,40 @@
-<h2><%= @game.title %></h2>
-<% if current_user?(@game.user) %>
-  <p><%= link_to "編集", edit_game_path(@game) %></p>
-  <p><%= link_to "削除", game_path, method: :delete,  data: { confirm: "削除してもよろしいですか？" } %></p>
-<% end %>
-<p><%= link_to "感想・レビューを書く", new_game_review_path(@game) %></p>
-<p><%= link_to "ゲーム一覧", games_path %></p>
-<p><%= link_to "ネタバレ", game_reviews_path(@game) %><p>
-<h3><%= @game.title %>の感想・レビュー</h3>
-<% @reviews.each do |review| %>
-  <h3>感想</h3>
-  <p><%= link_to review.user_name, user_path(review.user) %></p>
-  <%= link_to review.content, review_path(review) %>
-  <p><span><%= fa_icon "heart" %></span><%= review.likes.count %></p>
-  <%= review.created_at %>
-  <h3>コメント一覧</h3>
-  <% review.comments.each do |comment| %>
-    <%= comment.user_name %>
-    <%= comment.content %>
-  <% end %>
-  <hr>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2><%= @game.title %></h2>
+      <% if current_user?(@game.user) %>
+        <p><%= link_to edit_game_path(@game) do %></p>
+          <span><%= fa_icon "edit", text: t("title.edit_game") %></span>
+        <% end %>
+        <p><%= link_to game_path(@game), method: :delete,  data: { confirm: t("message.delete_confirmation") } do %></p>
+          <span><%= fa_icon "trash", text: t("link.delete_game") %></span>
+        <% end %>
+      <% end %>
+      <p><%= link_to t("title.register_review"), new_game_review_path(@game), class: "btn btn-warning" %></p>
+    </div>
+    <div class="col-md-8">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <%= link_to t("link.review"), game_path(@game), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t("link.spoiler"), game_reviews_path(@game), class: "nav-link" %>
+        </li>
+      </ul>
+      <h3><%= @game.title %><%= t("message.game_review") %></h3>
+      <% @reviews.each do |review| %>
+        <p><%= link_to review.user_name, user_path(review.user) %></p>
+        <%= link_to review.content, review_path(review) %>
+        <p><span><%= fa_icon "heart" %></span><%= review.likes.count %></p>
+        <p><%= time_ago_in_words(review.created_at) %><%= t("message.user_posted") %><p>
+        <h3><%= t("title.comment") %></h3>
+        <% review.comments.each do |comment| %>
+          <p><%= link_to comment.user_name, user_path(comment.user) %></p>
+          <p><%= comment.content %></p>
+          <p><%= time_ago_in_words(comment.created_at) %><%= t("message.user_commented") %><p>
+        <% end %>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>

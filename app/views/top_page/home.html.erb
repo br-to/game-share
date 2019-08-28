@@ -1,9 +1,13 @@
-<h1>Game Share</h1>
+<h1><%= t("app.title") %></h1>
 <% if logged_in? %>
-  <p>ログインしとります</p>
-  <%= link_to "プロフィール", profile_path %>
+  <div class="text-center">
+    <h3><%= t("app.description") %></h3>
+    <%= link_to t("title.register_game"), new_game_path, class: "btn btn-warning" %>
+  </div>
 <% else %>
-  <%= link_to "GameShareとは", "/help" %>
-  <%= link_to "新規登録する", "/signup" %>
-  <%= link_to "ログイン", "/login" %>
+  <div class="text-center">
+    <h3><%= t("app.description") %></h3>
+    <%= link_to t("title.new_registration"), signup_path, class: "btn btn-lg btn-warning" %>
+    <%= link_to t("title.login"), login_path, class: "btn btn-lg btn-warning" %>
+  </div>
 <% end %>

@@ -1,14 +1,32 @@
-<h2><%= @game.title %></h2>
-<% @reviews.each do |review| %>
-  <h3>ネタバレ</h3>
-  <p><%= link_to review.user_name, user_path(review.user) %></p>
-  <%= link_to review.content, review_path(review) %>
-  <p><span><%= fa_icon "heart" %></span><%= review.likes.count %></p>
-  <%= review.created_at %>
-  <h3>コメント一覧</h3>
-  <% review.comments.each do |comment| %>
-    <%= comment.user_name %>
-    <%= comment.content %>
-  <% end %>
-<% end %>
-<%= link_to "感想に戻る", game_path(@game) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2><%= @game.title %></h2>
+      <p><%= link_to t("title.register_review"), new_game_review_path(@game), class: "btn btn-warning" %></p>
+    </div>
+    <div class="col-md-8">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <%= link_to t("link.review"), game_path(@game), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t("link.spoiler"), game_reviews_path(@game), class: "nav-link" %>
+        </li>
+      </ul> 
+      <h3><%= @game.title %><%= t("message.game_spoiled") %></h3>
+      <% @reviews.each do |review| %>
+        <p><%= link_to review.user_name, user_path(review.user) %></p>
+        <%= link_to review.content, review_path(review) %>
+        <p><span><%= fa_icon "heart" %></span><%= review.likes.count %></p>
+        <p><%= time_ago_in_words(review.created_at) %><%= t("message.user_posted") %><p>
+        <h3><%= t("title.comment") %></h3>
+        <% review.comments.each do |comment| %>
+          <p><%= link_to comment.user_name, user_path(comment.user) %></p>
+          <p><%= comment.content %></p>
+          <p><%= time_ago_in_words(comment.created_at) %><%= t("message.user_commented") %><p>
+        <% end %>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
