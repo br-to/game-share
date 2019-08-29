@@ -41,8 +41,10 @@ gem "jquery-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -52,6 +54,7 @@ group :development do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+  gem "spring-commands-rspec"
   gem "web-console", ">= 3.3.0"
 end
 
