@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
   end
 
   it "email addresses should be saved as lower-case" do
+    @user.email = "Foo@ExAMPle.CoM"
     @user.save!
     expect(@user.reload.email).to eq @user.email.downcase
   end
