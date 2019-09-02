@@ -7,3 +7,4 @@
 <p><%= link_to profile_path, method: :delete, data: { confirm: t("message.delete_confirmation") } do %></p>
   <span><%= fa_icon "user-times", text: t("link.delete_user") %></span>
 <% end %>
+<p><%= link_to t("link.logout"), logout_path, method: :delete, class: "btn btn-warning" %></p>
