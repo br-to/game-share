@@ -1,19 +1,19 @@
 require "rails_helper"
 
-describe "ゲーム一覧" do
+describe "ゲーム一覧", type: :system do
   let(:user) { create :user }
   before do
-    game1 = create(:game, user: user, created_at: 2)
-    game2 = create(:game, user: user, created_at: 3)
-    game3 = create(:game, user: user, created_at: 1)
-    @games = [game3, game1, game2]
+    game1 = create(:game, title: "pokemon", user: user)
+    game2 = create(:game, title: "mario", user: user)
+    game3 = create(:game, title: "zeruda", user: user)
   end
 
-  it "created_at順に並ぶと成功" do
+  it "作成順に並ぶと成功" do
     login user
     visit games_path
-    @games.each do |game| 
-      expect(page).to have_content game.title 
+    within ".games" do
+      game_titles = all(".game-title").map(&:text)
+      expect(game_titles).to eq ["zeruda", "mario", "pokemon"]
     end
   end
 end
