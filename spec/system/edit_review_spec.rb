@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "感想・レビュー編集" do
+describe "感想・レビュー編集", type: :system do
   before do
     user = create(:user)
     game = create(:game, user: user)

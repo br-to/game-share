@@ -1,8 +1,8 @@
 require "rails_helper"
 
-describe "感想・レビューの登録" do
+describe "感想・レビューの登録", type: :system do
   let(:user) { create :user }
-  let(:game) { create(:game, user: user) }
+  let(:game) { create :game, user: user }
   before do
     login user
     visit new_game_review_path(game)

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "ゲームタイトル登録" do
+describe "ゲームタイトル登録", type: :system do
   before do
     user = create(:user)
     login user

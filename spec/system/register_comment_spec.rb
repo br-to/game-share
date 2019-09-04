@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "コメントの登録" do
+describe "コメントの登録", type: :system do
   let(:user) { create :user }
   let(:review) { create(:review, user: user) }
   before do
