@@ -1,11 +1,11 @@
 require "rails_helper"
 
-describe "ゲームタイトル編集" do
+describe "ゲームタイトル編集", type: :system do
   before do
     user = create(:user)
-    game = create(:game, user: user)
+    game = create(:game)
 
-    login user
+    login game.user
     visit edit_game_path(game)
     fill_in "game[title]", with: title
     click_button I18n.t("title.edit")
