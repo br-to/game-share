@@ -1,8 +1,8 @@
 require "rails_helper"
 
-describe "感想・レビューの登録" do
+describe "感想・レビューの登録", type: :system do
   let(:user) { create :user }
-  let(:game) { create(:game, user: user) }
+  let(:game) { create :game, user: user }
   before do
     login user
     visit new_game_review_path(game)
@@ -13,7 +13,6 @@ describe "感想・レビューの登録" do
 
   context "正しい値を入力した場合" do
     let(:content) { Faker::Lorem.sentence }
-    let(:is_spoiled) { true }
 
     it "ネタバレ登録成功" do
       expect(page).to have_content I18n.t("flash.spoiler_registration_success")
@@ -23,7 +22,6 @@ describe "感想・レビューの登録" do
 
   context "不正なcontentを入力した場合" do
     let(:content) { nil }
-    let(:is_spoiled) { true }
 
     it "ネタバレ登録失敗" do
       expect(page).to have_content I18n.t("flash.registration_failed")
