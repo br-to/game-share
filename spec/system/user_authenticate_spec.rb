@@ -56,6 +56,7 @@ describe "認証機能", type: :system do
 
     it "ログアウト成功" do
       login user
+      click_link I18n.t("title.menu")
       click_link I18n.t("link.logout")
       expect(page).to have_content I18n.t("flash.logout_success")
       expect(page).to have_current_path root_path
