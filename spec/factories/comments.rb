@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
-    content { Faker::Lorem.sentences(number: 1) }
+    content { Faker::Lorem.sentence }
     user
     review
   end
