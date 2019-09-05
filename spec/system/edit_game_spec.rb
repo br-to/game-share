@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "ゲームタイトル編集", type: :system do
   before do
-    user = create(:user)
+    create(:user)
     game = create(:game)
 
     login game.user

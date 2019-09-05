@@ -12,7 +12,7 @@ module GameShare
     config.load_defaults 5.2
     config.i18n.default_locale = :ja
     config.action_view.field_error_proc = proc do |html_tag, _instance|
-      html_tag.to_s.html_safe
+      content_tag(html_tag.to_s)
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
