@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/game_share
     docker:
       # specify the version you desire here
        - image: circleci/ruby:2.6.3-node-browsers
@@ -17,6 +16,8 @@ jobs:
          environment:
            POSTGRES_USER: postgres
            POSTGRES_DB: game_share_test
+
+    working_directory: ~/game_share
 
     steps:
       - checkout
@@ -34,8 +35,8 @@ jobs:
       # Restore bundle cache
       - restore_cache:
           keys:
-            - rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v1-
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
       
       - run:
           name: Install Ruby Dependencies
@@ -44,7 +45,7 @@ jobs:
 
       # Store bundle cache
       - save_cache:
-          key: rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
