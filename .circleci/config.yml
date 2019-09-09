@@ -7,8 +7,8 @@ jobs:
        - image: circleci/ruby:2.6.3-node
          environment:
            RAILS_ENV: test
-           PGHOST: 127.0.0.1
-           PGUSER: postgres
+           POSTGRES_HOST: 127.0.0.1
+           POSTGRES_USER: postgres
            BUNDLER_VERSION: 2.0.1
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -34,8 +34,8 @@ jobs:
       # Restore bundle cache
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
+            - rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v1-
       
       - run:
           name: Install Ruby Dependencies
@@ -44,7 +44,7 @@ jobs:
 
       # Store bundle cache
       - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: rails-demo-bundle-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
@@ -57,4 +57,13 @@ jobs:
           command: |
             bundle exec rails db:create
             bundle exec rails db:migrate
+      
+       # run tests!
+      - run:
+          name: Rspec
+          command: bundle exec rspec
+
+      - run:
+          name: rubocop
+          command: bundle exec rubocop
        
