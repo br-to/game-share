@@ -57,8 +57,6 @@ jobs:
           command: |
             bundle exec rails db:create
             bundle exec rails db:migrate
-
-      
       
        # run tests!
       - run:
@@ -68,4 +66,9 @@ jobs:
       - run:
           name: rubocop
           command: bundle exec rubocop
-       
+
+workflows:
+  version: 2
+  game_share_test:
+    jobs:
+      - build       
