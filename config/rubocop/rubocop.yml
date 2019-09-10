@@ -54,7 +54,7 @@ Layout/SpaceInsideBlockBraces:
 
 #　改行文字を入れろというエラーがあったので入れた。
 Layout/EndOfLine:
-  Enabled: false
+  EnforcedStyle: crlf
 
 #################### Lint ##################################
 
