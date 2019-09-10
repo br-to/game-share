@@ -4,6 +4,7 @@ AllCops:
     - "node_modules/**/*" 
     - "vendor/**/*"       
     - "db/schema.rb"
+    - "bin/**"
 
 #################### Layout ################################
 

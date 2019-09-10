@@ -1,0 +1,73 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+       - image: circleci/ruby:2.6.3-node-browsers
+         environment:
+           RAILS_ENV: test
+           BUNDLER_VERSION: 2.0.1
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+       - image: circleci/postgres:11.5
+         environment:
+           POSTGRES_USER: postgres
+           POSTGRES_DB: game_share_test
+
+    working_directory: ~/game_share
+
+    steps:
+      - checkout
+
+       # Setup bundler 2+
+      - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            sudo gem install bundler
+
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      
+      - run:
+          name: Install Ruby Dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      # Store bundle cache
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 120s
+
+      - run:
+          name: Database setup
+          command: |
+            bundle exec rails db:create
+            bundle exec rails db:migrate
+      
+       # run tests!
+      - run:
+          name: Rspec
+          command: bundle exec rspec
+
+      - run:
+          name: rubocop
+          command: bundle exec rubocop
+
+workflows:
+  version: 2
+  game_share_test:
+    jobs:
+      - build       
