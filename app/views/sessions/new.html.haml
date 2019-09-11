@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-md-6
+      %h1= t("title.login")
+      = form_for User.new, url: login_path, as: :session do |f|
+        %p
+          = f.label :email
+          = f.email_field :email, class: "form-control"
+        %p
+          = f.label :password
+          = f.password_field :password, class: "form-control"
+        %p= f.submit t("title.login"), class: "btn btn-warning"
+      = link_to t("title.new_registration"), signup_path

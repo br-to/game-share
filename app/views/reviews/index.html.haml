@@ -1,0 +1,33 @@
+.container
+  .row
+    .col-md-4
+      %h2= @game.title
+      %p= link_to t("title.register_review"), new_game_review_path(@game), class: "btn btn-warning"
+    .col-md-8
+      %ul.nav.nav-tabs
+        %li.nav-item
+          = link_to t("link.review"), game_path(@game), class: "nav-link"
+        %li.nav-item
+          = link_to t("link.spoiler"), game_reviews_path(@game), class: "nav-link"
+      %h3
+        = @game.title
+        = t("message.game_spoiled")
+      - @reviews.each do |review|
+        %p= link_to review.user_name, user_path(review.user)
+        = link_to review.content, review_path(review)
+        %p
+          %span= fa_icon "heart"
+          = review.likes.count
+        %p
+          = time_ago_in_words(review.created_at)
+          = t("message.user_posted")
+        %p
+        %h3= t("title.comment")
+        - review.comments.each do |comment|
+          %p= link_to comment.user_name, user_path(comment.user)
+          %p= comment.content
+          %p
+            = time_ago_in_words(comment.created_at)
+            = t("message.user_commented")
+          %p
+        %hr/

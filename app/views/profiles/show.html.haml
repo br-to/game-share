@@ -1,0 +1,15 @@
+%h1= t("title.user_information")
+%p
+  = User.human_attribute_name :name
+  = current_user.name
+%p
+  = User.human_attribute_name :email
+  = current_user.email
+%p
+  = link_to edit_profile_path do
+    %span
+    = fa_icon "user", text: t("title.edit_user")
+%p
+  = link_to profile_path, method: :delete, data: { confirm: t("message.delete_confirmation") } do
+    %span
+    = fa_icon "user-times", text: t("link.delete_user")

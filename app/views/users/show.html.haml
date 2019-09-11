@@ -1,0 +1,35 @@
+.container
+  .row
+    .col-md-4
+      %h1= t("title.mypage")
+      %h3
+        = User.human_attribute_name :name
+        = @user.name
+      = link_to t("title.register_game"), new_game_path, class: "btn btn-warning"
+    .col-md-8
+      - if @user.games.any?
+        %h3
+          = @user.name
+          = t("message.user_register_game")
+        - @games.each do |game|
+          %p= link_to game.title, game_path(game)
+          %hr/
+        - if @user.reviews.any?
+          %h3
+            = @user.name
+            = t("message.game_review")
+          - @reviews.each do |review|
+            %p= review.game_title
+            = link_to review.content, review_path(review)
+            %p
+              = time_ago_in_words(review.created_at)
+              = t("message.user_posted")
+            %p
+            %hr/
+        %h3
+          = @user.name
+          = t("message.user_liked_review")
+        - @user.liked_review.each do |review|
+          %p= review.game_title
+          %p= review.content
+          %hr/
