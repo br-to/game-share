@@ -5,6 +5,7 @@
       %h3
         = User.human_attribute_name :name
         = @user.name
+      %p= image_tag(@user.user_picture_url, size: "200x200") if @user.user_picture.present?
       = link_to t("title.register_game"), new_game_path, class: "btn btn-warning"
     .col-md-8
       - if @user.games.any?
