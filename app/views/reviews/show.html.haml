@@ -1,0 +1,35 @@
+.container
+  .row
+    .col-md-6
+      %h2= t("title.review_show")
+      %p= @review.user_name
+      %p= @review.game_title
+      = @review.content
+      - if current_user?(@review.user)
+        = link_to edit_review_path(@review) do
+          %span= fa_icon "edit", text: t("title.edit_review")
+        = link_to review_path(@review), method: :delete, data: { confirm: t("message.delete_confirmation") } do
+          %span= fa_icon "trash", text: t("link.delete_review")
+      - if @review.liked_by?(current_user)
+        %p
+          = link_to like_path(@like), method: :delete do
+            %span= fa_icon "heart", text: t("link.delete_like")
+      - else
+        %p
+          = link_to review_likes_path(@review), method: :post do
+            %span= fa_icon "heart-o", text: t("link.register_like")
+      %p
+        = t("message.likes_count")
+        = @review.likes.count
+      - @comments.each do |comment|
+        %p= comment.user_name
+        = comment.content
+        - if current_user?(comment.user)
+          = link_to comment_path(comment), method: :delete, data: { confirm: t("message.delete_confirmation") } do
+            %span= fa_icon "trash", text: t("link.delete_comment")
+        %hr/
+      = form_with(model: [@review, @comment], local: true) do |f|
+        = render 'layouts/error_messages', model: f.object
+        %p= f.text_field :content, placeholder: t("title.register_comment"), class: "form-control"
+        %p= f.submit t("title.comment"), class: "btn btn-warning"
+      = link_to t("link.back_review_index"), game_path(@review.game)

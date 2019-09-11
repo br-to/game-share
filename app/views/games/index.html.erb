@@ -1,8 +1,0 @@
-<h1><%= t("title.game_index") %></h1>
-<ul class="games">
-<% @games.each do |game| %>
-  <li class="game-title"><%=link_to game.title, game_path(game) %></li>
-  <hr>
-<% end %>
-</ul>
-<%= paginate @games %>

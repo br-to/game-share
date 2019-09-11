@@ -5,4 +5,4 @@ ja:
         name: ユーザー名
         email: メールアドレス
         password: パスワード
-        password_cofirmation: パスワードの確認
+        password_confirmation: パスワードの確認

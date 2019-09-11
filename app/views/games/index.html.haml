@@ -1,0 +1,6 @@
+%h1= t("title.game_index")
+%ul.games
+  - @games.each do |game|
+    %li.game-title= link_to game.title, game_path(game)
+    %hr/
+= paginate @games
