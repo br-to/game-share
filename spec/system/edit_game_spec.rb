@@ -8,6 +8,7 @@ describe "ゲームタイトル編集", type: :system do
     login game.user
     visit edit_game_path(game)
     fill_in "game[title]", with: title
+    attach_file "game[game_picture]", "#{Rails.root}/spec/fixtures/game2.png"
     click_button I18n.t("title.edit")
   end
 
@@ -16,6 +17,7 @@ describe "ゲームタイトル編集", type: :system do
 
     it "編集成功" do
       expect(page).to have_content I18n.t("flash.game_update_success")
+      expect(page).to have_selector("img[src$='game2.png']")
       expect(page).to have_content title
     end
   end

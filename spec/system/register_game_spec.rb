@@ -6,6 +6,7 @@ describe "ゲームタイトル登録", type: :system do
     login user
     visit new_game_path
     fill_in "game[title]", with: title
+    attach_file "game[game_picture]", "#{Rails.root}/spec/fixtures/game.png"
     click_button I18n.t("title.register")
   end
 
@@ -14,6 +15,7 @@ describe "ゲームタイトル登録", type: :system do
 
     it "登録成功" do
       expect(page).to have_current_path games_path
+      expect(page).to have_selector("img[src$='game.png']")
       expect(page).to have_content I18n.t("flash.game_registration_success")
     end
   end
