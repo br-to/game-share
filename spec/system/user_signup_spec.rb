@@ -9,7 +9,7 @@ describe "ユーザー登録", type: :system do
     fill_in "user[email]", with: email
     fill_in "user[password]", with: password
     fill_in "user[password_confirmation]", with: password_confirmation
-    attach_file "user[user_picture]", "#{Rails.root}/spec/fixtures/user.png"
+    attach_file "user[image]", "#{Rails.root}/spec/fixtures/user.png"
     click_button I18n.t("title.register")
   end
 

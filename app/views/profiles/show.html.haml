@@ -5,10 +5,10 @@
 %p
   = User.human_attribute_name :email
   = current_user.email
-- if current_user.user_picture.present?
+- if current_user.image.present?
   %p
-    = User.human_attribute_name :user_picture
-    = image_tag(current_user.user_picture_url, size: "200x200") 
+    = User.human_attribute_name :image
+    = image_tag(current_user.image_url, size: "200x200") 
 %p
   = link_to edit_profile_path do
     %span

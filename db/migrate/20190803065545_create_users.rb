@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :email
       t.string :password_digest
-      t.string :user_picture
+      t.string :image
 
       t.timestamps
       t.index :email, unique: true

@@ -2,7 +2,7 @@
   .row
     .col-md-4
       %h2= @game.title
-      %p= image_tag(@game.game_picture_url, size: "200x200") if @game.game_picture.present?
+      %p= image_tag(@game.picture_url, size: "200x200") if @game.picture.present?
       - if current_user?(@game.user)
         %p
           = link_to edit_game_path(@game) do
@@ -34,7 +34,7 @@
         %h3= t("title.comment")
         - review.comments.each do |comment|
           %p= link_to comment.user_name, user_path(comment.user)
-          %p= image_tag(comment.user.user_picture_url, size: "20x20") if comment.user.user_picture.present?
+          %p= image_tag(comment.user.image_url, size: "20x20") if comment.user.image.present?
           %p= comment.content
           %p
             = time_ago_in_words(comment.created_at)

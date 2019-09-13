@@ -6,7 +6,7 @@ describe "ゲームタイトル登録", type: :system do
     login user
     visit new_game_path
     fill_in "game[title]", with: title
-    attach_file "game[game_picture]", "#{Rails.root}/spec/fixtures/game.png"
+    attach_file "game[picture]", "#{Rails.root}/spec/fixtures/game.png"
     click_button I18n.t("title.register")
   end
 

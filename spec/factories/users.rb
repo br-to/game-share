@@ -4,6 +4,6 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { "password" }
     password_confirmation { "password" }
-    user_picture { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/fixtures/user.png")) }
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/fixtures/user.png")) }
   end
 end

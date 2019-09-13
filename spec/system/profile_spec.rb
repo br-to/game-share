@@ -10,7 +10,7 @@ describe "プロフィール", type: :system do
       fill_in "user[email]", with: email
       fill_in "user[password]", with: password
       fill_in "user[password_confirmation]", with: password_confirmation
-      attach_file "user[user_picture]", "#{Rails.root}/spec/fixtures/user2.png"
+      attach_file "user[image]", "#{Rails.root}/spec/fixtures/user2.png"
       click_button I18n.t("title.edit")
     end
 

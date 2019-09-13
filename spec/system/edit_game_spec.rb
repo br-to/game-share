@@ -8,7 +8,7 @@ describe "ゲームタイトル編集", type: :system do
     login game.user
     visit edit_game_path(game)
     fill_in "game[title]", with: title
-    attach_file "game[game_picture]", "#{Rails.root}/spec/fixtures/game2.png"
+    attach_file "game[picture]", "#{Rails.root}/spec/fixtures/game2.png"
     click_button I18n.t("title.edit")
   end
 
