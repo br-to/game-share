@@ -22,7 +22,7 @@
         = t("message.game_review")
       - @reviews.each do |review|
         %p= link_to review.user_name, user_path(review.user)
-        %p= image_tag(review.user.user_picture_url, size: "20x20") if review.user.user_picture.present?
+        %p= image_tag(review.user.image_url, size: "20x20") if review.user.image.present?
         = link_to review.content, review_path(review)
         %p
           %span= fa_icon "heart"
