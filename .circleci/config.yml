@@ -65,9 +65,31 @@ jobs:
       - run:
           name: rubocop
           command: bundle exec rubocop
+      
+
+  deploy:
+    docker:
+      - image: circleci/ruby:2.6.3-node-browsers
+
+    working_directory: ~/game_share
+
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+            fi
 
 workflows:
   version: 2
-  game_share_test:
+  build-deploy:
     jobs:
-      - build       
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
