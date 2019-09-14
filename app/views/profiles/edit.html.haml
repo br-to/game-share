@@ -15,4 +15,7 @@
         %p
           = f.label :password_confirmation
           = f.password_field :password_confirmation, class: "form-control"
+        %p
+          = f.label :image
+          = f.file_field :image
         %p= f.submit t("title.edit"), class: "btn btn-warning"

@@ -9,6 +9,7 @@ describe "ユーザー登録", type: :system do
     fill_in "user[email]", with: email
     fill_in "user[password]", with: password
     fill_in "user[password_confirmation]", with: password_confirmation
+    attach_file "user[image]", "#{Rails.root}/spec/fixtures/user.png"
     click_button I18n.t("title.register")
   end
 
@@ -20,6 +21,8 @@ describe "ユーザー登録", type: :system do
 
     it "登録成功" do
       expect(page).to have_content I18n.t("flash.user_registration_success")
+      expect(page).to have_current_path profile_path
+      expect(page).to have_selector("img[src$='user.png']")
     end
   end
 

@@ -3,4 +3,7 @@
   %p
     = f.label :title
     = f.text_field :title, class: "form-control"
+  %p
+    = f.label :picture
+    = f.file_field :picture
   %p= f.submit yield(:button_text), class: "btn btn-warning"

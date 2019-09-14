@@ -6,3 +6,4 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワードの確認
+        image: プロフィール画像

@@ -2,13 +2,14 @@
   .row
     .col-md-4
       %h2= @game.title
+      %p= image_tag(@game.picture_url, size: 200) if @game.picture.present?
       - if current_user?(@game.user)
         %p
           = link_to edit_game_path(@game) do
             %span= fa_icon "edit", text: t("title.edit_game")
-      %p
-        = link_to game_path(@game), method: :delete,  data: { confirm: t("message.delete_confirmation") } do
-          %span= fa_icon "trash", text: t("link.delete_game")
+        %p
+          = link_to game_path(@game), method: :delete,  data: { confirm: t("message.delete_confirmation") } do
+            %span= fa_icon "trash", text: t("link.delete_game")
       %p= link_to t("title.register_review"), new_game_review_path(@game), class: "btn btn-warning"
     .col-md-8
       %ul.nav.nav-tabs
@@ -21,6 +22,7 @@
         = t("message.game_review")
       - @reviews.each do |review|
         %p= link_to review.user_name, user_path(review.user)
+        %p= image_tag(review.user.image_url, size: 20) if review.user.image.present?
         = link_to review.content, review_path(review)
         %p
           %span= fa_icon "heart"
@@ -32,6 +34,7 @@
         %h3= t("title.comment")
         - review.comments.each do |comment|
           %p= link_to comment.user_name, user_path(comment.user)
+          %p= image_tag(comment.user.image_url, size: 20) if comment.user.image.present?
           %p= comment.content
           %p
             = time_ago_in_words(comment.created_at)
