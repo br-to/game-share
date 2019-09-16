@@ -75,7 +75,7 @@ jobs:
 
     steps:
       - checkout
-       - run:
+      - run:
           name: 'Install Heroku CLI, if necessary'
           command: |
             if [[ $(command -v heroku) == "" ]]; then
