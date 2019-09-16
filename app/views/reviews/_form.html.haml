@@ -1,5 +1,4 @@
 = form_with(model: [game, review], local: true) do |f|
-  = render 'layouts/error_messages', model: f.object
   %p
     = f.label :content
     = f.text_area :content, class: "form-control"
