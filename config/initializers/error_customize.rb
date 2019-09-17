@@ -12,7 +12,7 @@ ActionView::Base.field_error_proc = proc do |html_tag, instance|
         "#{instance.object.class.human_attribute_name(method_name)}#{error}"
       end
     end
-    view.content_tag(:div, class: "has-error") do
+    view.content_tag(:span, class: "has-error") do
       view.safe_join(field_tag)
     end
   end
