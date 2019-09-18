@@ -29,7 +29,6 @@
             %span= fa_icon "trash", text: t("link.delete_comment")
         %hr/
       = form_with(model: [@review, @comment], local: true) do |f|
-        = render 'layouts/error_messages', model: f.object
         %p= f.text_field :content, placeholder: t("title.register_comment"), class: "form-control"
         %p= f.submit t("title.comment"), class: "btn btn-warning"
       = link_to t("link.back_review_index"), game_path(@review.game)
