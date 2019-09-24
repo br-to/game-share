@@ -27,7 +27,7 @@ class User < ApplicationRecord
   def self.new_token
     SecureRandom.urlsafe_base64
   end
-  
+
   private
 
     def downcase_email
