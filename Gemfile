@@ -52,6 +52,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "letter_opener"
+  gem "letter_opener_web"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails"
