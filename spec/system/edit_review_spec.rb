@@ -6,6 +6,7 @@ describe "感想・レビュー編集", type: :system do
       user = create(:user)
       game = create(:game, user: user)
       review = create(:review, game: game, user: user)
+      activate user
       login user
       visit edit_review_path(review)
       fill_in "review[content]", with: content
@@ -36,6 +37,7 @@ describe "感想・レビュー編集", type: :system do
       user = create(:user)
       game = create(:game, user: user)
       review = create(:review, game: game, is_spoiled: is_spoiled, user: user)
+      activate user
       login user
       visit edit_review_path(review)
       fill_in "review[content]", with: content

@@ -3,6 +3,7 @@ require "rails_helper"
 describe "ゲームタイトル登録", type: :system do
   before do
     user = create(:user)
+    activate user
     login user
     visit new_game_path
     fill_in "game[title]", with: title

@@ -9,6 +9,7 @@ describe "コメント削除", type: :system do
   end
 
   it "コメント削除成功" do
+    activate user
     login user
     visit review_path(review)
     click_link I18n.t("link.delete_comment")

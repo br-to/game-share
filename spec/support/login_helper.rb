@@ -5,4 +5,10 @@ module LoginHelper
     fill_in "session[password]", with: user.password
     click_button I18n.t("title.login")
   end
+
+  def activate(user)
+    user.activation_token = User.new_token
+    visit edit_account_activation_path(user.activation_token, email: user.email)
+    user.update!(activated: true)
+  end
 end

@@ -5,6 +5,7 @@ describe "ゲームタイトル削除", type: :system do
   let(:game) { create :game, user: user }
 
   it "titleの削除成功" do
+    activate user
     login user
     visit game_path(game)
     click_link I18n.t("link.delete_game")

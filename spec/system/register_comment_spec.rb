@@ -4,6 +4,7 @@ describe "コメントの登録", type: :system do
   let(:user) { create :user }
   let(:review) { create(:review, user: user) }
   before do
+    activate user
     login user
     visit review_path(review)
     fill_in "comment[content]", with: content

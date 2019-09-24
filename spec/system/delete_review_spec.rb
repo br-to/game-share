@@ -7,6 +7,7 @@ describe "感想・レビュー削除", type: :system do
     let(:review) { create :review, game: game, user: user }
 
     it "ネタバレなし感想・レビュー削除成功" do
+      activate user
       login user
       visit review_path(review)
       click_link I18n.t("link.delete_review")
@@ -20,6 +21,7 @@ describe "感想・レビュー削除", type: :system do
     let(:review) { create :review, is_spoiled: true, game: game, user: user }
 
     it "ネタバレ削除成功" do
+      activate user
       login user
       visit review_path(review)
       click_link I18n.t("link.delete_review")
