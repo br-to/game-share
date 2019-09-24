@@ -3,6 +3,8 @@ class AccountActivationsController < ApplicationController
   def edit
     user = User.find_by(email: params[:email])
     if user && !user.activated?
+      user.update!(activated: true)
+      user.update!(activated_at: Time.zone.now)
       log_in(user)
       redirect_to profile_url, success: t(:account_activation, scope: :flash)
     else
