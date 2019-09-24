@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         log_in(user)
         redirect_to profile_url, success: t(:login_success, scope: :flash)
       else
-        redirect_to root_url, warning: t(:invalid_link, scope: :flash)
+        redirect_to root_url, warning: t(:login_failed, scope: :flash)
       end
     else
       flash.now[:warning] = t(:login_failed, scope: :flash)
