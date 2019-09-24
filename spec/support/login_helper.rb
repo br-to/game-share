@@ -7,8 +7,6 @@ module LoginHelper
   end
 
   def activate(user)
-    user.activation_token = User.new_token
-    visit edit_account_activation_path(user.activation_token, email: user.email)
-    user.update!(activated: true)
+    user.update!(activated: true, activated_at: Time.current)
   end
 end
