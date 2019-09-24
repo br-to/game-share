@@ -9,8 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
     if @user.save
       UserMailer.account_activation(@user).deliver_now
-      flash[:success] = t(:mail_check, scope: :flash)
-      redirect_to root_url
+      redirect_to root_url, success: t(:mail_check, scope: :flash)
     else
       flash.now[:danger] = t(:registration_failed, scope: :flash)
       render "new"
