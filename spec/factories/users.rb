@@ -5,5 +5,6 @@ FactoryBot.define do
     password { "password" }
     password_confirmation { "password" }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/fixtures/user.png")) }
+    activated { false }
   end
 end
