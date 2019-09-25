@@ -10,13 +10,13 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   validates :name, presence: true, length: { maximum: 50 }
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: { presence: true, allow_nil: true }, length: { minimum: 6, allow_nil: true }
   has_secure_password
   mount_uploader :image, PictureUploader
 
   def self.digest(string)
     cost =
-      if ActiveModel::SecurePassword.min_cost
+      if Rails.env.test?
         BCrypt::Engine::MIN_COST
       else
         BCrypt::Engine.cost
@@ -24,8 +24,15 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def self.new_token
+  def self.generate_token
     SecureRandom.urlsafe_base64
+  end
+
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   private
@@ -35,7 +42,7 @@ class User < ApplicationRecord
     end
 
     def create_activation_digest
-      self.activation_token = User.new_token
+      self.activation_token = User.generate_token
       self.activation_digest = User.digest(activation_token)
     end
 end
