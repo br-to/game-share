@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root "top_page#home"
   get "/help", to: "top_page#help"
   get "/signup", to: "users#new"
@@ -16,4 +15,5 @@ Rails.application.routes.draw do
     end
   end
   resource :profile, only: [:show, :edit, :update, :destroy]
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
