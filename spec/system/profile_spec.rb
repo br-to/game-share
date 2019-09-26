@@ -4,6 +4,7 @@ describe "プロフィール", type: :system do
   describe "ユーザー編集" do
     let(:user) { create :user }
     before do
+      activate user
       login user
       visit edit_profile_path(user)
       fill_in "user[name]", with: name
@@ -77,6 +78,7 @@ describe "プロフィール", type: :system do
     let(:user) { create(:user) }
 
     it "ユーザー削除成功" do
+      activate user
       login user
       visit profile_path
       click_link I18n.t("link.delete_user")

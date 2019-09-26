@@ -5,6 +5,7 @@ describe "ナイス機能", type: :system do
     before do
       user = create(:user)
       review = create(:review, user: user)
+      activate user
       login user
       visit review_path(review)
     end
@@ -21,6 +22,7 @@ describe "ナイス機能", type: :system do
       user = create(:user)
       review = create(:review, user: user)
       create(:like, user: user, review: review)
+      activate user
       login user
       visit review_path(review)
     end

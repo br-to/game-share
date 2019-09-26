@@ -7,8 +7,12 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      log_in(user)
-      redirect_to profile_url, success: t(:login_success, scope: :flash)
+      if user.activated?
+        log_in(user)
+        redirect_to profile_url, success: t(:login_success, scope: :flash)
+      else
+        redirect_to root_url, warning: t(:login_failed, scope: :flash)
+      end
     else
       flash.now[:warning] = t(:login_failed, scope: :flash)
       render "new"

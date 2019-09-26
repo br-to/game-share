@@ -17,3 +17,6 @@ ja:
     user_registration_success: ユーザーを登録しました
     user_update_success: ユーザー情報を更新しました
     update_failed: 更新できませんでした
+    mail_check: 届いたメールを確認してください
+    account_activation: アカウントの有効化しました
+    invalid_link: リンクは有効ではありません

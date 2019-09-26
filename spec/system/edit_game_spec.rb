@@ -4,7 +4,7 @@ describe "ゲームタイトル編集", type: :system do
   before do
     create(:user)
     game = create(:game)
-
+    activate game.user
     login game.user
     visit edit_game_path(game)
     fill_in "game[title]", with: title

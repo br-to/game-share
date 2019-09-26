@@ -20,9 +20,8 @@ describe "ユーザー登録", type: :system do
     let(:password_confirmation) { "password" }
 
     it "登録成功" do
-      expect(page).to have_content I18n.t("flash.user_registration_success")
-      expect(page).to have_current_path profile_path
-      expect(page).to have_selector("img[src$='user.png']")
+      expect(page).to have_content I18n.t("flash.mail_check")
+      expect(page).to have_current_path root_path
     end
   end
 

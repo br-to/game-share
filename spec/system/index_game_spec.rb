@@ -9,6 +9,7 @@ describe "ゲーム一覧", type: :system do
   end
 
   it "作成順に並ぶと成功" do
+    activate user
     login user
     visit games_path
     within ".games" do

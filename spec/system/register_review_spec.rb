@@ -5,6 +5,7 @@ describe "感想・レビューの登録", type: :system do
   let(:game) { create :game, user: user }
   describe "ネタバレなしレビュ―登録" do
     before do
+      activate user
       login user
       visit new_game_review_path(game)
       fill_in "review[content]", with: content
@@ -32,6 +33,7 @@ describe "感想・レビューの登録", type: :system do
 
   describe "ネタバレありレビューの登録" do
     before do
+      activate user
       login user
       visit new_game_review_path(game)
       fill_in "review[content]", with: content
