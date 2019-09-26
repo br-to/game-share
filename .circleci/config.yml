@@ -100,4 +100,4 @@ workflows:
             - build
           filters:
             branches:
-              only: fix-heroku-error
+              only: master
