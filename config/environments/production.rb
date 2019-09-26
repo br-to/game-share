@@ -62,8 +62,9 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "game_share_#{Rails.env}"
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action.mailer.default_url_options = { host: "game-share-1.herokuapp.com", protocol: "https" }
+  config.action_mailer.default_url_options = { host: "game-share-1.herokuapp.com", protocol: "https" }
   ActionMailer::Base.smtp_settings = {
     address: "smtp.sendgrid.net",
     port: "587",
