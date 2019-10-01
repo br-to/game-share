@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   def create
     review = Review.find(params[:review_id])
     current_user.likes.create!(review: review)
-    LikeMailer.liked_review(review.user).deliver_now
+    LikeMailer.liked_review(review.user, review).deliver_now
     redirect_to review_url(review)
   end
 

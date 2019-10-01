@@ -1,3 +1,5 @@
-%h3= @user.name + "さん"
-%p
-  = "あなたの感想にコメントが付きました！"
+%p= @user.name + "さん、あなたの感想にコメントが付きました！"
+%p= "感想・レビュー"
+%p= link_to @review.content, review_url(@review)
+%p= "コメントの内容"
+%h3= @comment.content
