@@ -25,7 +25,6 @@ describe "ユーザー登録", type: :system do
       expect(page).to have_current_path root_path
     end
 
-    # 新規登録されたらメールが一つ送られていることを確かめる
     it "メール送信成功" do
       expect(ActionMailer::Base.deliveries.count).to eq(1)
     end

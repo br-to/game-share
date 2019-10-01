@@ -4,7 +4,7 @@ describe "ナイス機能", type: :system do
   describe "感想・レビューをナイスする" do
     let(:user) { create :user }
     let(:review) { create(:review, user: user) }
-    let(:mail) { LikeMailer.liked_review(user) }
+    let(:mail) { LikeMailer.liked_review(user, review) }
     before do
       activate user
       login user
@@ -17,7 +17,6 @@ describe "ナイス機能", type: :system do
       expect(page).to have_content I18n.t("message.likes_count", count: 1)
     end
 
-    # ナイスされたらメールが一つ送られていることを確かめる
     it "メール送信成功" do
       expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
