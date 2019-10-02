@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe "ユーザー登録", type: :system do
   let(:user) { build :user }
+  let(:mail) { UserMailer.account_activation(user) }
   before do
     visit signup_path
     click_link I18n.t("title.new_registration")
@@ -22,6 +23,10 @@ describe "ユーザー登録", type: :system do
     it "登録成功" do
       expect(page).to have_content I18n.t("flash.mail_check")
       expect(page).to have_current_path root_path
+    end
+
+    it "メール送信成功" do
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
   end
 

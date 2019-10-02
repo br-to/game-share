@@ -42,6 +42,10 @@ Rails/SafeNavigation:
 Rails/SaveBang:
   Enabled: true
 
+# update_attributeを使用することを避けろと警告されたため
+Rails/SkipsModelValidations:
+  Enabled: false
+
 # staging 環境を使っているので追加
 Rails/UnknownEnv:
   Environments:

@@ -3,6 +3,7 @@ require "rails_helper"
 describe "コメントの登録", type: :system do
   let(:user) { create :user }
   let(:review) { create(:review, user: user) }
+  let(:mail) { CommentMailer.commented_review(user, review, comment) }
   before do
     activate user
     login user
@@ -17,6 +18,10 @@ describe "コメントの登録", type: :system do
     it "コメント登録成功" do
       expect(page).to have_content I18n.t("flash.comment_registration_success")
       expect(page).to have_content content
+    end
+
+    it "メール送信成功" do
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
   end
 

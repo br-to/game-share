@@ -2,8 +2,9 @@ class CommentsController < ApplicationController
   def create
     @review = Review.find(params[:review_id])
     @comment = @review.comments.build(params_comment)
-    @comment.user_id = current_user.id
+    @comment.user = current_user
     if @comment.save
+      CommentMailer.commented_review(@review.user, @review, @comment).deliver_now
       redirect_to review_url(@review), success: t(:comment_registration_success, scope: :flash)
     else
       flash.now[:warning] = t(:registration_failed, scope: :flash)
