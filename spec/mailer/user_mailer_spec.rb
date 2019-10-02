@@ -7,7 +7,12 @@ RSpec.describe UserMailer, type: :mailer do
 
     it "renders the headers" do
       expect(mail.from).to eq ["from@example.com"]
+      expect(mail.to).to eq [user.email]
       expect(mail.subject).to eq "アカウントの有効化"
+    end
+
+    it "renders the body" do
+      expect(mail.text_part.body.to_s.encode("UTF-8")).to match user.name
     end
   end
 end
