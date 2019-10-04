@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_review_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @reviews = @game.reviews.where(is_spoiled: true).includes(:user, :comments)
+    @reviews = @game.reviews.where(is_spoiled: true).includes(:user, { comments: :user })
   end
 
   def new
