@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @games = @user.games
-    @reviews = @user.reviews.includes(:game)
+    @reviews = @user.liked_review.includes(:game)
   end
 
   private
