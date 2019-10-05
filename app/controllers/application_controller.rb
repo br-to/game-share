@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
     def authenticate_user
       unless logged_in?
-        redirect_to login_url, warning: "ログインしてください"
+        redirect_to login_url, warning: t(:login, scope: :flash)
       end
     end
 
