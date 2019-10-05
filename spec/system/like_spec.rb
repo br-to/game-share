@@ -3,8 +3,9 @@ require "rails_helper"
 describe "ナイス機能", type: :system do
   describe "感想・レビューをナイスする" do
     let(:user) { create :user }
-    let(:review) { create(:review, user: user) }
+    let(:review) { create :review, user: user }
     let(:mail) { LikeMailer.liked_review(user, review) }
+
     before do
       activate user
       login user

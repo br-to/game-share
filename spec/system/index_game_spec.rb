@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe "ゲーム一覧", type: :system do
   let(:user) { create :user }
+
   before do
     create(:game, title: "pokemon", user: user)
     create(:game, title: "mario", user: user)

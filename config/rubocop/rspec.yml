@@ -44,9 +44,9 @@ RSpec/InstanceVariable:
 # ほぼ MultipleExpectations についてはチェックされなくなる設定なので注意。
 # パフォーマンスの問題さえ無ければ 1 example 1 assertion にしておく方が
 # 読みやすいテストになりやすいので、そこはレビューで担保していく必要がある。
-# 現在最大のexpectの量が4つなので、5つまでexpectを書けるように設定しておく。
+# 現在最大のexpectの量が4つなので、4つまでexpectを書けるように設定しておく。
 RSpec/MultipleExpectations:
-  Max: 5
+  Max: 4
 
 # 変に名前つけて呼ぶ方が分かりづらい。
 # テスト対象メソッドを呼ぶだけの subject 以外を書かないようにする方が効く。

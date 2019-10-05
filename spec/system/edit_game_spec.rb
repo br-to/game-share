@@ -1,9 +1,10 @@
 require "rails_helper"
 
 describe "ゲームタイトル編集", type: :system do
+  let(:user) { create :user }
+  let(:game) { create :game, user: user }
+
   before do
-    create(:user)
-    game = create(:game)
     activate game.user
     login game.user
     visit edit_game_path(game)
