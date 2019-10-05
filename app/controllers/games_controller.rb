@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.create_order
+    @games = Game.order(created_at: :desc).page(params[:page]) 
   end
 
   def new
