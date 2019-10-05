@@ -1,8 +1,9 @@
 require "rails_helper"
 
 describe "プロフィール", type: :system do
+  let(:user) { create :user }
+
   describe "ユーザー編集" do
-    let(:user) { create :user }
     before do
       activate user
       login user
@@ -75,8 +76,6 @@ describe "プロフィール", type: :system do
   end
 
   describe "ユーザー削除" do
-    let(:user) { create(:user) }
-
     it "ユーザー削除成功" do
       activate user
       login user

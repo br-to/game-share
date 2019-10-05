@@ -2,8 +2,9 @@ require "rails_helper"
 
 describe "コメントの登録", type: :system do
   let(:user) { create :user }
-  let(:review) { create(:review, user: user) }
+  let(:review) { create :review, user: user }
   let(:mail) { CommentMailer.commented_review(user, review, comment) }
+
   before do
     activate user
     login user

@@ -1,11 +1,13 @@
 require "rails_helper"
 
 describe "感想・レビュー編集", type: :system do
+  let(:user) { create :user }
+  let(:game) { create :game, user: user }
+
   describe "ネタバレなしレビュー編集" do
+    let(:review) { create :review, game: game, user: user }
+
     before do
-      user = create(:user)
-      game = create(:game, user: user)
-      review = create(:review, game: game, user: user)
       activate user
       login user
       visit edit_review_path(review)
@@ -32,11 +34,9 @@ describe "感想・レビュー編集", type: :system do
   end
 
   describe "ネタバレありレビュー編集" do
-    let(:is_spoiled) { true }
+    let(:review) { create :review, is_spoiled: true, game: game, user: user }
+
     before do
-      user = create(:user)
-      game = create(:game, user: user)
-      review = create(:review, game: game, is_spoiled: is_spoiled, user: user)
       activate user
       login user
       visit edit_review_path(review)
