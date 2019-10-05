@@ -6,6 +6,8 @@ class Review < ApplicationRecord
   delegate :name, to: :user, prefix: true
   delegate :title, to: :game, prefix: true
   validates :content, presence: true, length: { maximum: 255 }
+  scope :spoiled, -> { where(is_spoiled: true).includes(:user, { comments: :user }) }
+  scope :unspoiled, -> { where(is_spoiled: false).includes(:user, { comments: :user }) }
 
   def liked_by?(user)
     likes.find_by(user: user).present?

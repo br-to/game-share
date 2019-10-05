@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.order(created_at: :desc).page params[:page]
+    @games = Game.create_order
   end
 
   def new
@@ -19,7 +19,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @reviews = @game.reviews.where(is_spoiled: false).includes(:user, { comments: :user })
+    @reviews = @game.reviews.unspoiled
   end
 
   def edit
