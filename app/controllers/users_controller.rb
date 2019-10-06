@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       UserMailer.account_activation(@user).deliver_now
       redirect_to root_url, success: t(:mail_check, scope: :flash)
     else
-      flash.now[:danger] = t(:registration_failed, scope: :flash)
+      flash.now[:warning] = t(:registration_failed, scope: :flash)
       render "new"
     end
   end

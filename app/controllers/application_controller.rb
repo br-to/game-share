@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user
   helper_method :current_user, :logged_in?, :current_user?
-  add_flash_types :success, :info, :warning, :danger
+  add_flash_types :success, :warning
 
   private
 
     def authenticate_user
       unless logged_in?
-        redirect_to login_url, warning: "ログインしてください"
+        redirect_to login_url, warning: t(:login, scope: :flash)
       end
     end
 

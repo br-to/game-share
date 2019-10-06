@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @game.reviews.build(review_params)
-    @review.user_id = current_user.id
+    @review.user = current_user
     if @review.save
       if @review.is_spoiled?
         redirect_to game_reviews_url(@game), success: t(:spoiler_registration_success, scope: :flash)
