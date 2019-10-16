@@ -1,24 +1,18 @@
-# README
+# game share
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
 
-Things you may want to cover:
+game shareは、ゲームを登録して、そのゲームの感想やレビューを共有する情報共有サービスです。また、感想やレビューの情報にネタバレを含む場合、含まない場合で分けることができたり、コメントやいいねをすることが可能です。
 
-* Ruby version
+## 開発環境
 
-* System dependencies
+言語については下記のバージョンを用いております。
 
-* Configuration
+Ruby:       2.6.3
+Rails:      5.2.3
+PostgreSQL:  11.5
+bootstrap:  4.3.1
 
-* Database creation
+## なぜこのアプリを作成したか
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+読んだ本を共有したりするアプリや、観た映画を共有するアプリは存在するのに、自分がやったゲームを共有できるものってあまりないなという思いとProgate、Railsチュートリアルをこなしてきて、何かを共有するアプリくらいなら自分の実力でも作れるという思いから作成しました。
