@@ -8,7 +8,7 @@ class AccountActivationsController < ApplicationController
       log_in(user)
       redirect_to profile_url, success: t(:account_activation, scope: :flash)
     else
-      redirect_to root_url, info: t(:invalid_link, scope: :flash)
+      redirect_to root_url, warning: t(:invalid_link, scope: :flash)
     end
   end
 end

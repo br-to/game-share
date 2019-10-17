@@ -1,24 +1,22 @@
-# README
+# game share
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://game-share-1.herokuapp.com
 
-Things you may want to cover:
+## 概要
 
-* Ruby version
+game shareはゲームを登録して、そのゲームのレビューを共有する情報共有サービスです。また、レビューの情報にネタバレを含む場合、含まない場合で登録する場所を変更したり、コメントやいいねをすることが可能です。
 
-* System dependencies
+## 開発環境
 
-* Configuration
+言語については下記のバージョンを用いております。
 
-* Database creation
+   ```
+   Ruby:        2.6.3    
+   Rails:       5.2.3    
+   PostgreSQL:  11.5    
+   bootstrap:   4.3.1 
+   ```
 
-* Database initialization
+## なぜこのアプリを作成したか
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+このアプリを作成する前、私は読んだ本を共有したりするものや、観た映画を共有するものは存在するのにも関わらず、プレイしたゲームの感想を共有するものはあまりないということに気づきました。そこでProgate、Railsチュートリアルを通して、Twitterのようなアプリを作成してきたので、同じようなシェアリングアプリであれば自分でもゼロから作れるという確信があったためこのアプリの作成に至りました。

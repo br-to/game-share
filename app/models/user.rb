@@ -10,7 +10,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   validates :name, presence: true, length: { maximum: 50 }
-  validates :password, presence: { presence: true, allow_nil: true }, length: { minimum: 6, allow_nil: true }
+  validates :password, presence: true, length: { minimum: 6 }
   has_secure_password
   mount_uploader :image, PictureUploader
 
