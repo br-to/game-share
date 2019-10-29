@@ -1,10 +1,10 @@
 ja:
   message: 
     delete_confirmation: 削除してもよろしいですか?
-    game_review: の感想・レビュー
-    game_spoiled: のネタバレ
+    game_review: 感想・レビュー
+    game_spoiled: ネタバレ
     likes_count: ナイス数
-    user_register_game: が登録したゲーム
+    user_register_game: 登録したゲーム
     user_posted: 前に投稿されました
     user_commented: 前にコメントされました
-    user_liked_review: がナイスした感想
+    user_liked_review: ナイスした感想
