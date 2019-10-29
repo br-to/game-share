@@ -1,2 +1,2 @@
-%p= @user.name + "さん、下の有効化をクリックしてアカウントを有効化してください。"
+%p= "#{@user.name}さん、下のリンクをクリックしてアカウントを有効化してください。"
 %p= link_to t("link.activate"), edit_account_activation_url(@user.activation_token, email: @user.email)
