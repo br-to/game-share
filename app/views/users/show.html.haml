@@ -1,35 +1,26 @@
 .container
   .row
-    .col-md-4
-      %h1= t("title.mypage")
-      %h3
-        = User.human_attribute_name :name
-        = @user.name
-      %p= image_tag(@user.image_url, size: 200) if @user.image.present?
-      = link_to t("title.register_game"), new_game_path, class: "btn btn-warning"
-    .col-md-8
+    .col-md-3.offset-md-1
+      %p.pt-3= @user.name
+      %p.p-4= image_tag(@user.image_url, size: 100) if @user.image.present?
+      = link_to t("title.register_game"), new_game_path, class: "btn btn-success"
+    .col-md-7.offset-md-1
       - if @user.games.any?
-        %h3
-          = @user.name
-          = t("message.user_register_game")
+        %h5= t("message.user_register_game")
         - @games.each do |game|
           %p= link_to game.title, game_path(game)
           %hr/
-        - if @user.reviews.any?
-          %h3
-            = @user.name
-            = t("message.game_review")
-          - @reviews.each do |review|
-            %p= review.game_title
-            = link_to review.content, review_path(review)
-            %p
-              = time_ago_in_words(review.created_at)
-              = t("message.user_posted")
-            %p
-            %hr/
-        %h3
-          = @user.name
-          = t("message.user_liked_review")
+      - if @reviews.any?
+        %h5= t("message.game_review")
+        - @reviews.each do |review|
+          %p= review.game_title
+          = link_to review.content, review_path(review)
+          %p
+            = time_ago_in_words(review.created_at)
+            = t("message.user_posted")
+          %p
+          %hr/
+        %h5= t("message.user_liked_review")
         - @user.liked_review.each do |review|
           %p= review.game_title
           %p= review.content

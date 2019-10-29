@@ -1,10 +1,11 @@
-%h1= t("app.title")
 - if logged_in?
   .text-center
-    %h3= t("app.description")
-    = link_to t("title.register_game"), new_game_path, class: "btn btn-warning"
+    %h2= t("app.title")
+    %p.p-3= t("app.description")
+    %p.pt-3= link_to t("title.register_game"), new_game_path, class: "btn btn-success"
 - else
   .text-center
-    %h3= t("app.description")
-    = link_to t("title.new_registration"), signup_path, class: "btn btn-lg btn-warning"
-    = link_to t("title.login"), login_path, class: "btn btn-lg btn-warning"
+    %h2= t("app.title")
+    %p.p-3= t("app.description")
+    = link_to t("title.new_registration"), signup_path, class: "btn btn-lg btn-success"
+    = link_to t("title.login"), login_path, class: "btn btn-lg btn-success"

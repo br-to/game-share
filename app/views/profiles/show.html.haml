@@ -1,19 +1,19 @@
-%h1= t("title.user_information")
-%p
-  = User.human_attribute_name :name
-  = current_user.name
-%p
-  = User.human_attribute_name :email
-  = current_user.email
-- if current_user.image.present?
+.text-center
+  %h1= t("title.user_information")
   %p
-    = User.human_attribute_name :image
-    = image_tag(current_user.image_url, size: 200) 
-%p
-  = link_to edit_profile_path do
-    %span
-    = fa_icon "user", text: t("title.edit_user")
-%p
-  = link_to profile_path, method: :delete, data: { confirm: t("message.delete_confirmation") } do
-    %span
-    = fa_icon "user-times", text: t("link.delete_user")
+    = User.human_attribute_name :name
+    = current_user.name
+  %p
+    = User.human_attribute_name :email
+    = current_user.email
+  - if current_user.image.present?
+    %p.rounded
+      = User.human_attribute_name :image
+      = image_tag(current_user.image_url, size: 100) 
+  %p
+    = link_to edit_profile_path do
+      %span
+      = fa_icon "user", text: t("title.edit_user")
+    = link_to profile_path, method: :delete, data: { confirm: t("message.delete_confirmation") } do
+      %span
+      = fa_icon "user-times", text: t("link.delete_user")

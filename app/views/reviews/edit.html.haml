@@ -1,6 +1,6 @@
 - provide(:button_text, t("title.edit"))
 .container
   .row
-    .col-md-6
+    .col-md-6.offset-md-3
       %h1= t("title.edit_review")
       = render "form", game: @game, review: @review

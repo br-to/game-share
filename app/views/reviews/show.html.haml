@@ -1,15 +1,15 @@
 .container
   .row
-    .col-md-6
-      %h2= t("title.review_show")
-      %p= @review.user_name
+    .col-md-6.offset-md-3
+      %h1= t("title.review_show")
       %p= @review.game_title
-      = @review.content
+      %p= @review.content
       - if current_user?(@review.user)
-        = link_to edit_review_path(@review) do
-          %span= fa_icon "edit", text: t("title.edit_review")
-        = link_to review_path(@review), method: :delete, data: { confirm: t("message.delete_confirmation") } do
-          %span= fa_icon "trash", text: t("link.delete_review")
+        .float-right
+          = link_to edit_review_path(@review) do
+            %span= fa_icon "edit lg"
+          = link_to review_path(@review), method: :delete, data: { confirm: t("message.delete_confirmation") } do
+            %span.delete-review= fa_icon "trash lg"
       - if @review.liked_by?(current_user)
         %p
           = link_to like_path(@like), method: :delete do
@@ -25,10 +25,11 @@
         %p= comment.user_name
         = comment.content
         - if current_user?(comment.user)
-          = link_to comment_path(comment), method: :delete, data: { confirm: t("message.delete_confirmation") } do
-            %span= fa_icon "trash", text: t("link.delete_comment")
+          .float-right
+            = link_to comment_path(comment), method: :delete, data: { confirm: t("message.delete_confirmation") } do
+              %span.delete-comment= fa_icon "trash lg"
         %hr/
       = form_with(model: [@review, @comment], local: true) do |f|
         %p= f.text_field :content, placeholder: t("title.register_comment"), class: "form-control"
-        %p= f.submit t("title.comment"), class: "btn btn-warning"
+        %p.text-center= f.submit t("title.comment"), class: "btn btn-success"
       = link_to t("link.back_review_index"), game_path(@review.game)
