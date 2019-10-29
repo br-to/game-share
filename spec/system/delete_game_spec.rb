@@ -8,7 +8,7 @@ describe "ゲームタイトル削除", type: :system do
     activate user
     login user
     visit game_path(game)
-    click_link I18n.t("link.delete_game")
+    find(".delete-game").click
     page.driver.browser.switch_to.alert.accept
     expect(page).to have_content I18n.t("flash.game_destroy_success")
     expect(page).to have_current_path games_path

@@ -13,9 +13,7 @@ describe "ゲーム一覧", type: :system do
     activate user
     login user
     visit games_path
-    within ".games" do
-      game_titles = all(".game-title").map(&:text)
-      expect(game_titles).to eq ["zeruda", "mario", "pokemon"]
-    end
+    game_titles = all(".game-title").map(&:text)
+    expect(game_titles).to eq ["zeruda", "mario", "pokemon"]
   end
 end
