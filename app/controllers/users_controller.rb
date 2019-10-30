@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @games = @user.games
-    @reviews = @user.liked_review.includes(:game)
+    @reviews = @user.reviews.order(created_at: :desc).includes(:game)
   end
 
   private

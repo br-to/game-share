@@ -10,7 +10,7 @@ describe "感想・レビュー削除", type: :system do
       activate user
       login user
       visit review_path(review)
-      click_link I18n.t("link.delete_review")
+      find(".delete-review").click
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_content I18n.t("flash.review_destroy_success")
       expect(page).to have_current_path game_path(game)
@@ -24,7 +24,7 @@ describe "感想・レビュー削除", type: :system do
       activate user
       login user
       visit review_path(review)
-      click_link I18n.t("link.delete_review")
+      find(".delete-review").click
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_content I18n.t("flash.review_destroy_success")
       expect(page).to have_current_path game_path(game)

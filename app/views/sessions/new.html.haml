@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-6
+    .col-md-6.offset-md-3
       %h1= t("title.login")
       = form_for User.new, url: login_path, as: :session do |f|
         %p
@@ -9,5 +9,4 @@
         %p
           = f.label :password
           = f.password_field :password, class: "form-control"
-        %p= f.submit t("title.login"), class: "btn btn-warning"
-      = link_to t("title.new_registration"), signup_path
+        %p.text-center= f.submit t("title.login"), class: "btn btn-success"

@@ -1,7 +1,16 @@
-%h1= t("title.game_index")
-%ul.games
-  - @games.each do |game|
-    %li.game-title= link_to game.title, game_path(game)
-    = image_tag(game.picture_url, size: 200) if game.picture.present?
-    %hr/
-= paginate @games
+.container
+  .row
+    .col-md-6.offset-md-3
+      %h1= t("title.game_index")
+      %ul.games
+      - @games.each do |game|
+        %li.game-title= link_to game.title, game_path(game)
+        - if current_user?(game.user)
+          .float-right
+            = link_to edit_game_path(game) do
+              %span= fa_icon "edit lg"
+            = link_to game_path(game), method: :delete, data: { confirm: t("message.delete_confirmation") } do
+              %span= fa_icon "trash lg"
+        = image_tag(game.picture_url, size: 100) if game.picture.present?
+        %hr/
+      = paginate @games
