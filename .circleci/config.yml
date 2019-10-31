@@ -100,4 +100,4 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: store-image
