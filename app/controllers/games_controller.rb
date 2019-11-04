@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  skip_before_action :authenticate_user, only: [:index, :show]
   def index
     @games = Game.order(created_at: :desc).includes(:user).page(params[:page]).per(10)
   end
