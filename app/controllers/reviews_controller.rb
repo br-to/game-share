@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  skip_before_action :authenticate_user, only: :index
   before_action :set_game_find, only: [:index, :new, :create]
   before_action :set_review_find, only: [:show, :edit, :update, :destroy]
 
